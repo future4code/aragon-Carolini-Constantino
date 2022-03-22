@@ -50,6 +50,31 @@ console.log("Olá", nome, "você tem", idade, "anos.")
 
 //2. Escreva um programa que faça 3 perguntas de Sim ou Não, armazenado em uma variável. Por exemplo: "Você está usando uma roupa azul hoje?".
 
-console.log("Você gosta de gatos?")
+gostaDeGatos = prompt("Você gosta de gatos?")
 let perg1 = true
 console.log(perg1)
+
+gostaDeChurrasco = prompt("Você gosta de churrasco?")
+let perg2 = false 
+console.log(perg2)
+
+eGaúcho = prompt("Você é gaúcho?")
+let perg3 = true
+console.log(perg3)
+
+let a = 10
+let b = 25
+let c 
+
+a = c
+b = a
+c = b
+    
+var num1 = prompt("Digite um número");
+var num2 = prompt("Digite outro número para somar e multiplicar");
+
+resultado1 = Number(num1)+Number(num2);
+console.log("X = ", resultado1);
+    
+resultado2 = num1*num2;
+console.log("Y = ", resultado2);
