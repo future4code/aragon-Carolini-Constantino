@@ -71,10 +71,10 @@
 //console.log(resp1)
 
 //d.
-fuction funD("msg"){
-  let calculo = msg.length().toUpper()
-  return calculo
-}
-
-let teste = funD("Olá mundo")
-console.log(teste)
+ function funD(msg){
+ let calculo1 = msg.toUpperCase() 
+  let calculo2 = msg.length
+     return calculo1+calculo2
+  }
+ let primeiraMsg = funD("Olá mundo")
+ console.log(primeiraMsg)
