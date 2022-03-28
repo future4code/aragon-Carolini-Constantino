@@ -90,13 +90,17 @@ function retornaUltimoElemento(array) {
   return array.pop()
 }
 
-// EXERCÍCIO 11
+// EXERCÍCIO 11 Escreva uma função que recebe um array e retorna um array com o primeiro e o último elemento trocados.
 function trocaPrimeiroEUltimo(array) {
-  let primeiroItem = array.shift()
-  let ultimoItem = array.pop()
-trocaPrimeiroEUltimo.replaceAll(primeiroItem, ultimoItem)
-return trocaPrimeiroEUltimo
+  let last = array[array.length - 1];
+
+  array.splice(0, 1)
+  array.splice(-1,1);
+
+  array = [last,...array,first]
+    return array
 }
+
 
 // EXERCÍCIO 12
 function checaIgualdadeDesconsiderandoCase(string1, string2) {
