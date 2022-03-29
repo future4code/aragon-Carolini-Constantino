@@ -98,31 +98,68 @@
 //console.log(lista(pessoa1))
 
 //3)
-const carrinho = []
+//const carrino = []
 
-const fruta1 = {
-nome: `uva`, 
-disponibilidade: true
+//const fruta1 = {
+//nome: `uva`, 
+//disponibilidade: true
+//}
+
+//const fruta2 = {
+//nome: `morango`, 
+//disponibilidade: true
+//}
+
+//const fruta3 = {
+//nome: `melancia`, 
+//disponibilidade: true
+//}
+
+//function compras(frutasEscolhidas){
+  //  carrinho.push(fruta1)
+   // carrinho.push(fruta2)
+    //carrinho.push(fruta3)
+    //return frutasEscolhidas
+//}
+
+//console.log(compras(carrinho))
+
+//........................................................................
+const turmaTarde = []
+
+const aluno1 = {
+    nome: `Ana`,
+    idade: 13,
+    nota_1º_sem: 80,
+    nota_2º_sem: 90,
+    nota_final: 97
 }
 
-const fruta2 = {
-nome: `morango`, 
-disponibilidade: true
+const aluno2 = {
+    nome: `Bianca`,
+    idade: 13,
+    nota_1º_sem: 45,
+    nota_2º_sem: 40,
+    nota_final: 43
+    }
+
+const aluno3 = {
+        nome: `Bruno`,
+        idade: 14,
+        nota_1º_sem: 90,
+        nota_2º_sem: 90,
+        nota_final: 90
+        }
+
+function listarAlunosTarde(alunoN){
+    turmaTarde.push(aluno1)
+    turmaTarde.push(aluno2)
+    turmaTarde.push(aluno3)
+    return alunoN
 }
 
-const fruta3 = {
-nome: `melancia`, 
-disponibilidade: true
-}
+console.log(listarAlunosTarde(turmaTarde))
 
-function compras(frutasEscolhidas){
-    carrinho.push(fruta1)
-    carrinho.push(fruta2)
-    carrinho.push(fruta3)
-    return frutasEscolhidas
-}
-
-console.log(compras(carrinho))
 
 
 
