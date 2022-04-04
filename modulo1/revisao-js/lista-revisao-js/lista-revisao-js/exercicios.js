@@ -15,6 +15,11 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
+  let arrayCrescente = []
+  let numeromaior
+  for (let i=o; i<array.length; i++){
+    if(array[i] > )}
+}
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
