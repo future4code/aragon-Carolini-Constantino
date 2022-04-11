@@ -18,7 +18,8 @@ button{
 }
 .logo{
     border-radius: 50%;
-    width: 4%;
+    width: 60px;
+    padding: 20px;
 }
 
 h1{
@@ -65,17 +66,30 @@ h2, h3{
 #bloco-inicial{
     color: white;
     background-color: black;
-    opacity:  80%;
+    opacity:  50%;
     text-align: center;
 }
 
-.img-projeto{
-    width: 60%;
+.lista-titulos{
+    padding: 20%;
 }
+.img-projeto{
+    width: 50vh;
+   }
 
 .projeto{
     text-align: center;
     background-color: black;
     color: white;
     border-radius: 8%;
+    opacity: 60%;
+
+}
+
+#mini-img-pj1{
+    display: inline;
+}
+
+#mini-img-pj2{
+    display: inline;
 }
