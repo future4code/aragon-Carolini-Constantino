@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+   grid-template-rows: 10vh 80vh 10vh;
+}
+
+header{
+    background-color: rgb(228, 89, 25);
+    display: flex;
+    justify-content: space-between; /*espaçamento entro os itens*/
+    align-items:center; /*centraliza verticalmente  no meio da linha */
+    padding-left: 20px;  /*deu um espaço ao lado esquerdo do "LabeTube*/ 
+    padding-right: 55px;
+}
+
+#busca-home{
+width: 12vh;
+padding: 9px;
+}
+
+input{
+    padding: 7px;
+
+}
+
+footer{
+    background-color: rgb(75, 75, 75);
+    display: flex;
+    align-items:center ;
+    color: white;
+    justify-content: center;   
+}
+
+main{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.card-video{
+    box-shadow: 2px 2px 1px green; 
+    margin: 5px;
+    width: 100%; 
+    
+}
+.card-video img{
+     width: 100%;
+}
+
+.body-detalhes video{
+    display: flex;
+
+}
+
+video{
+    width: 80%;
+    margin: 0 auto;
+}
