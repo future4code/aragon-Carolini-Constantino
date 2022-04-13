@@ -38,7 +38,7 @@ footer{
 
 main{
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 8px;
 }
@@ -61,4 +61,11 @@ main{
 video{
     width: 80%;
     margin: 0 auto;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    main {
+        grid-template-columns: 1fr;
+    }
 }
