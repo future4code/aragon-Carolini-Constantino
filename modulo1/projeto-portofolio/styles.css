@@ -1,0 +1,95 @@
+*{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input:hover{
+    background-color: #ffd59b;
+}
+input:focus{
+  background-color:#ffd56b
+}
+
+button{
+    color: aliceblue;
+    background-color: rgb(114, 114, 114);
+    display: block;
+    border-radius: 50%;
+    
+}
+.logo{
+    border-radius: 50%;
+    width: 60px;
+    padding: 20px;
+}
+
+h1{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    font-style:oblique;
+}
+
+h2, h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#foto-Carol{
+    width: 15%;
+    border-radius: 50%;
+}
+
+.icone-redes-sociais{
+    width: 2%;
+    border-radius: 50%;
+}
+
+.redes-sociais{
+    text-align: right;
+}
+
+.menu, footer{
+    background-color: #c09a3a;
+    text-align: center;
+    ;
+}
+
+.menu-home{
+    padding: 10vh;
+}
+.menu-conheca{
+    padding: 10vh;
+}
+.menu-projetos{
+    padding: 10vh;
+  
+}
+
+#bloco-inicial{
+    color: white;
+    background-color: black;
+    opacity:  50%;
+    text-align: center;
+}
+
+.lista-titulos{
+    padding: 20%;
+}
+.img-projeto{
+    width: 50vh;
+   }
+
+.projeto{
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-radius: 8%;
+    opacity: 60%;
+
+}
+
+#mini-img-pj1{
+    display: inline;
+}
+
+#mini-img-pj2{
+    display: inline;
+}
