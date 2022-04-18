@@ -54,12 +54,15 @@ main{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
     text-align: center;
+    
 
 }
 
 .catalogo div{
     padding: 15px;
     background-color: white;
+    border: solid pink;
+    margin: 3%;
 
 }
 
