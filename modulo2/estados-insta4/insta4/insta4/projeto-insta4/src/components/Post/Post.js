@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import App from '../../App'
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
@@ -34,11 +34,13 @@ const UserPhoto = styled.img`
   width: 30px;
   margin-right: 10px;
   border-radius: 50%;
+ 
 `
 
 const PostPhoto = styled.img`
   width: 100%;
 `
+
 
 class Post extends React.Component {
   state = {
@@ -95,11 +97,11 @@ class Post extends React.Component {
 
     return <PostContainer>
       <PostHeader>
-        <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
-        <p>{this.props.nomeUsuario}</p>
+        <UserPhoto src={this.props.listaDePosts.fotoUsuario} alt={'Imagem do usuario'}/>
+        <p>{this.props.listaDePosts.nomeUsuario}</p>
       </PostHeader>
 
-      <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <PostPhoto src={this.props.listaDePosts.fotoPost} alt={'Imagem do post'}/>
 
       <PostFooter>
         <IconeComContador
