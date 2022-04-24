@@ -1,0 +1,19 @@
+ main{
+   height: 99vh;
+   border: solid black 1px;
+   margin-left: 30%;
+   margin-right: 30%;
+   
+ }
+
+ .containerConversa{
+   height: 85vh;
+ }
+ 
+ .campoNome{
+  width: 20%;
+ }
+
+ .campoMensagem{
+   width: 58%;
+ }
