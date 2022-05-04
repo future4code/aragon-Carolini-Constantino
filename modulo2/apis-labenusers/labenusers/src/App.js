@@ -18,7 +18,7 @@ class App extends React.Component {
 
   render() {
     return (
-    <section>
+    <section >
       <button onClick={this.changePage}>Trocar de tela</button>
       {this.state.page === "RegistrationPage"? <RegistrationPage /> : <UsersListPage/> }
     </section>
