@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
-import { PlaylistCard } from "./styled"
-import {Title} from "./styled"
-
+import { PlaylistCard } from "./styled";
+import {Title} from "./styled";
+import {Body} from "./styled";
+import {List} from "./styled";
+import {input} from "./styled";
 
 export default class HomePage extends React.Component {
   state = {
@@ -58,34 +60,49 @@ export default class HomePage extends React.Component {
       });
   };
 
-  render() {
+  playlistDel = async(id) => {
+    try{
+      const response = await axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`, 
+      {
+        headers: {
+          Authorization: "carolini-constantino-aragon"
+        }
+      })
+      alert ("Playlist deletada com sucesso!")
+      this.getPlaylists()
+    }
+    catch (error) {
+      alert ("Ocorreu um erro, tente novamente.")
+    }
+  }
 
+  render(){
     const playlistList = this.state.playlistsList.map((playlist) => {
-      return <PlaylistCard
-       key={playlist.url}
-       onClick={() => this.props.goToDetailsPage(playlist.url)}
-       >
-         {playlist.name}
-         <button>Deletar</button>
+        return (
+        <PlaylistCard
+            key={playlist.id}
+            onClick={() => this.props.goToDetailsPage(playlist.id)}
+        >
+            {playlist.name}
+         <button onClick={() => this.playlistDel(playlist.id)}>Deletar</button>
          </PlaylistCard>
+         )
     })
-    console.log(playlistList)
+    
     return <div>
       <Title>Bem vindo à Loufy!</Title>
-      <label name='Nome nova Playlist'>
-        Digite aqui o nome da playlist que deseja criar:
-        <input
+      <Body>
+        <label name='Nome nova Playlist'>Digite aqui o nome da playlist que deseja criar:
+        <input 
           name="Nome nova Playlist"
           placeholder="Escreva aqui"
           type="text"
           value={this.state.newPlaylistInput}
-          onChange={this.handleNewPlaylistInput} />
+          onChange={this.handleNewPlaylistInput}/>
       </label>
     <button onClick={this.createPlaylist}>Criar</button>
-
-    {playlistList}
-    </div>
-
-  }
-}
-/**/
+    </Body>
+    
+    <List>{playlistList}</List>
+   </div>
+  }}

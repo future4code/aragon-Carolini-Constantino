@@ -3,39 +3,39 @@ import React from "react";
 import logo from './img/logo.jpg';
 import DetailsPage from "./Pages/DetailsPage/DetailsPage";
 import PlaylistsPage from "./Pages/PlaylistsPage/PlaylistsPage";
-
+ 
 
 class App extends React.Component {
   state = {
-    currentPage: "list",
-    clickedPlaylistUrl: ""
+    currentPage: "playlists",
+    clickedPlaylistId: ""
    
   }
 
-  goToDetailsPage = (url) => {
-    this.setState({currentPage: "detail", clickedPlaylistUrl: url})
+  goToDetailsPage = (id) => {
+    this.setState({currentPage: "details", clickedPlaylistId: id})
   }
 
-  gotToPlaylistsPage = (url) => {
-    this.setState({currentPage: "list", clickedPlaylistUrl: ""})
+  gotToPlaylistsPage = () => {
+    this.setState({currentPage: "playlists", clickedPlaylistId: ""})
   }
 
   selectPage = () => {
     switch (this.state.currentPage) {
-      case "list":
+      case "playlists":
       return <PlaylistsPage goToDetailsPage={this.goToDetailsPage}/>
-      case "detail":
-        return <DetailsPage gotToPlaylistsPage={this.gotToPlaylistsPage} url={this.state.clickedPlaylistUrl}/>
-        default:
+      case "details":
+        return <DetailsPage gotToPlaylistsPage={this.gotToPlaylistsPage} id={this.state.clickedPlaylisId}/>
+      default:
           return <PlaylistsPage goToDetailsPage={this.goToDetailsPage}/>
 
     }
   }
   render(){
-
+    console.log(`ESSAAAA: ${this.selectPage}`)
   return (
     <div>
-     <img className="logo" src= {logo} alt="Logo redondo com a imagem de uma caveira rosa e azul"/>
+   <img className="logo" src= {logo} alt="Logo redondo com a imagem de uma caveira rosa e azul"/> 
      {this.selectPage()}
     </div>
 
