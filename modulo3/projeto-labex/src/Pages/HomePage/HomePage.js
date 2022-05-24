@@ -8,7 +8,7 @@ function HomePage() {
 
       <main>
         <section>
-          <h2>Inscreva-se numa nova viagem!</h2>
+          <h2>Escolha sua nova viagem!</h2>
           <hr />
         </section>
 
