@@ -5,3 +5,7 @@ export function goToHomePage (navigate) {
 export function goToAdminPage (navigate) {
     navigate("/admin")
 };
+
+export function goToDetailsPage (navigate, id) {
+    navigate(`/admin/trips/${id}`)
+}

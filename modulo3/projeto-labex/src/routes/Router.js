@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminPage from "../Pages/AdminPage/AdminPage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import HomePage from "../Pages/HomePage/HomePage";
+import LabexDetailsPage from "../Pages/LabexDetailsPage"
 /*1-Começo criando as pages;
 2-Crio as rotas (abaixo), pois elas que vão me dizer pra onde vai caso
 a url mude
@@ -14,6 +15,7 @@ function Router() {
           <Route path={"/"} element={<HomePage/>} />
           <Route path={"/admin"} element={<AdminPage/>} />
           <Route path={"*"} element={<ErrorPage/>} />
+          <Route path={"/admin/trips/:id"} element={<LabexDetailsPage/>} />
       </Routes>
       </BrowserRouter>
     );
