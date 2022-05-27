@@ -3,30 +3,70 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { api_client, base_url } from "../../constants/url";
+import styledComponents from "styled-components";
 
-/*3-aqui é criado a função para renderizar a page
-NOTA-SE que dentro da função estamos chamando a actualPage por props
-(ela será enviada dentro da tag <Header/> em cada pág)
-4-Conforme altera apágina, altera o button tbm, e dentro de cada um é passado um onClick que
-será responsável por definir a rota de navegação por meio do método "goToPage"
-5-A função "goToPage" não está nessa para, ela está sendo importada do "coordinator"
-onde terá "os atalhos" que serão utilizado 
-6-Mas é importante não esquecer da const navigate que passará o useNavigate como parâmetro para a função "goToPage"
-o "useNavigate" é responsável pela navegação
-7-vá para coordinator*/
+const StyledHeader = styledComponents.div`
+button{
+      align-items: center;
+      background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+      border: 0;
+      border-radius: 8px;
+      box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      display: flex;
+      font-family: Phantomsans, sans-serif;
+      font-size: 15px;
+      justify-content: center;
+      line-height: 1em;
+    width: 5%;
+    height:3%;
+      padding: 10px 10px;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    
+    .button-63:active,
+    .button-63:hover {
+      outline: 0;
+    }
+    
+    @media (min-width: 768px) {
+      .button-63 {
+        font-size: 24px;
+        min-width: 196px;
+      }
+}
+h1{
+    font-family: Phantomsans, sans-serif;
+    font-size: 35px;
+    color: #A020F0
+}
+label{
+    font-family: Phantomsans, sans-serif;
+    font-size: 15px;
+    padding-left: 10px;
+
+}
+`
+
 function Header(props) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
 
-    const handleInputValues = (e) => { //método para controlar os inputs
-        switch (e.target.name){
+    const handleInputValues = (e) => {
+        switch (e.target.name) {
             case "email":
                 return setEmail(e.target.value);
-                case "password":
-                    return setPassword(e.target.value);
-                    default:
-                        return;
+            case "password":
+                return setPassword(e.target.value);
+            default:
+                return;
         }
     };
 
@@ -38,14 +78,14 @@ function Header(props) {
         axios.post(
             `${base_url}${api_client}/login`, body
         )
-        .then((res) => {
-            localStorage.setItem("token", res.data.token);
-            console.log(res.data.token)
-            goToAdminPage(navigate)
-        })
-        .catch((err) => {
-            console.log(err.response)
-        })
+            .then((res) => {
+                localStorage.setItem("token", res.data.token);
+                console.log(res.data.token)
+                goToAdminPage(navigate)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
     }
 
     const renderHeader = () => {
@@ -53,6 +93,8 @@ function Header(props) {
             case "homePage":
                 return (
                     <div>
+                        <StyledHeader>
+                        <h1>LabeX</h1>
                         <section>
                             <label htmlFor="email">Email:</label>
                             <input
@@ -62,7 +104,7 @@ function Header(props) {
                                 value={email}
                                 onChange={handleInputValues}
                             ></input>
-                            <br/>
+                         
                             <label htmlFor="password">Password:</label>
                             <input
                                 id="password"
@@ -72,14 +114,18 @@ function Header(props) {
                                 onChange={handleInputValues}
                             ></input>
                         </section>
+                       
                         <section>
-                        <button onClick={login}>Sing in</button>
+                            <button onClick={login}>Sing in</button>
                         </section>
+                        </StyledHeader>
                     </div>
                 );
             case "adminPage":
                 return (
+                    <StyledHeader>
                     <button onClick={logout}>Logout</button>
+                    </StyledHeader>
                 );
             default:
                 return;
@@ -92,11 +138,12 @@ function Header(props) {
         console.log("token removido");
     };
 
+    const adiminPage = () => {
+        goToAdminPage(navigate)
+    }
     return (
         <div>
-            
-            <h1>LabeX</h1>
-          {renderHeader()} 
+            {renderHeader()}
             <hr />
         </div>
     );

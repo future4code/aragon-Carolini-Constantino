@@ -1,52 +1,59 @@
-import Header from "../../Components/Header/Header";
-import { base_url, api_client } from "../../constants/url";
-import { useRequestData } from "../../hooks/useRequestData";
 import { useNavigate } from "react-router-dom";
+import Header from "../../Components/Header/Header";
+import { api_client, base_url } from "../../constants/url";
+import { useRequestData } from "../../hooks/useRequestData";
 import { goToDetailsPage } from "../../routes/coordinator";
+import styledComponents from "styled-components";
+import { CardTrip } from "./styles"
 
 function AdminPage() {
-    const [data, isLoading] = useRequestData(`${base_url}${api_client}/trips`,
-    []
-  );
-
+  const [data, isLoading] = useRequestData(`${base_url}${api_client}/trips`,
+  []
+);
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  return (
+    <div>
+      <Header
+        actualPage={"homePage"} />
 
-  const listTrip = data?.map((trip) => {
-      const butTons = (
-          <section>
-              <button onClick={() => goToDetailsPage(navigate, id)}>Detalhes</button>
-              <button onClick={() => deleteTrip(trip.id)}>Deletar</button>
-          </section>
-      )
-  })
+      <main>
+        <section>
+          <h2>Escolha sua nova viagem!</h2>
+          <hr />
+        </section>
 
-  const renderButton = () => {
-      if(token !== null) return <butTons/>;
-  }
+        <section>
+          <h2>Lista de viagens:</h2>
 
-    return (
-        <div>
-            <Header
-                actualPage={"adminPage"} />
-
-            <main>
-                <section>
-                    <h1>Crie uma nova viagem</h1>
-                    <hr />
-                </section>
-
-                <section>
-                    <h2>Lista de viagens:</h2>
-                    <h3>Nome:<p>{data.name} </p></h3>
-                    <h3>Descrição:<p>{data.description} </p></h3>
-                    <h3>Planeta:<p>{data.planet} </p></h3>
-                    <h3>Duração:<p>{data.durationInDays} </p></h3>
-                    <h3>Data:<p>{data}.....</p></h3>
-                    <renderButton/>
-                </section>
-            </main>
-        </div>
-    );
+          {isLoading ? (
+            <p>carregando...</p>
+          ) : (
+            <ul>
+              {data.trips?.map((trip) => {
+                return (
+                  <li key={trip.id}>
+                    <CardTrip>
+                    <p><b>Nome:</b> {trip.name}</p>
+    <p><b>Descrição:</b> {trip.description}</p>
+    <p><b>Planeta:</b> {trip.planet}</p>
+    <p><b>Duração:</b> {trip.durationInDays}</p>
+    <p><b>Data:</b> {trip.date}</p>
+    {token &&
+        <>
+            <button onClick={() => goToDetailsPage(navigate, trip.id)}>Exibir detalhes</button>
+            <button onClick={() => ""}>Excluir viagem</button>
+        </>}
+    <hr /></CardTrip>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
+      </main>
+    </div>
+  );
 }
 
 export default AdminPage;
