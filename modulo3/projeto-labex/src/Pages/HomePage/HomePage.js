@@ -86,11 +86,11 @@ function HomePage() {
               {data.trips?.map((trip) => {
                 return (
                   <StyledButton>
-                  <li key={trip.id}>
+                  <div key={trip.id}>
                      <button
                       onClick={() => goToDetailsPage(navigate, trip.id)}
                     >{trip.name}</button>
-                  </li>
+                  </div>
                   </StyledButton>
                 );
               })}

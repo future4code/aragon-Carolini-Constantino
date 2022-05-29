@@ -26,5 +26,5 @@ export const useRequestData = (url, initialState) => {
     useEffect(() => {
         getData()
     }, [])
-    return [data, isLoading]
+    return [data, isLoading, getData]
 }

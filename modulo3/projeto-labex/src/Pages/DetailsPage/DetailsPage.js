@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api_client, base_url } from "../../constants/url";
 import { useRequestData } from "../../hooks/useRequestData";
 import { goToHomePage, goToAdminPage } from "../../routes/coordinator";
+import { CardDetails } from "./styled";
 
 function LabexDetailsPage() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function LabexDetailsPage() {
 
     return (
         <main>
+          <CardDetails>
            <button onClick={() => goToAdminPage(navigate)}>Sair de detalhes</button>
            <h2>Detalhes daviagem:</h2>
            <hr/>
@@ -33,20 +35,17 @@ function LabexDetailsPage() {
           <p>{data.trip?.description}</p>
 
           <h2>{data.trip?.candidates.length} Pessoas inscritas</h2>
-          <ul>
             {data.trip?.candidates.map((candidate) => {
               return <li key={candidate.id}>{candidate.name}</li>;
             })}
-          </ul>
 
           <h2>{data.trip?.approved.length} Pessoas aprovadas</h2>
-          <ul>
             {data.trip?.approved.map((candidate) => {
               return <li key={candidate.id}>{candidate.name}</li>;
             })}
-          </ul>
         </div>
       )}
+      </CardDetails>
         </main>
     )
 }

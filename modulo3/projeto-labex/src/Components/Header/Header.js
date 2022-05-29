@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { api_client, base_url } from "../../constants/url";
 import styledComponents from "styled-components";
+import { requestLogin } from "../../services/requests";
 
 const StyledHeader = styledComponents.div`
 button{
@@ -54,7 +55,7 @@ label{
 }
 `
 
-function Header(props) {
+function Header() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
@@ -70,67 +71,10 @@ function Header(props) {
         }
     };
 
-    const login = () => {
-        const body = {
-            email,
-            password
-        };
-        axios.post(
-            `${base_url}${api_client}/login`, body
-        )
-            .then((res) => {
-                localStorage.setItem("token", res.data.token);
-                console.log(res.data.token)
-                goToAdminPage(navigate)
-            })
-            .catch((err) => {
-                console.log(err.response)
-            })
+    const login = (e) => {
+        e.preventDefault();
+        requestLogin(email, password, navigate);
     }
-
-    const renderHeader = () => {
-        switch (props.actualPage) {
-            case "homePage":
-                return (
-                    <div>
-                        <StyledHeader>
-                        <h1>LabeX</h1>
-                        <section>
-                            <label htmlFor="email">Email:</label>
-                            <input
-                                id="email"
-                                name="email"
-                                type={"text"}
-                                value={email}
-                                onChange={handleInputValues}
-                            ></input>
-                         
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                id="password"
-                                name="password"
-                                type={"password"}
-                                value={password}
-                                onChange={handleInputValues}
-                            ></input>
-                        </section>
-                       
-                        <section>
-                            <button onClick={login}>Sing in</button>
-                        </section>
-                        </StyledHeader>
-                    </div>
-                );
-            case "adminPage":
-                return (
-                    <StyledHeader>
-                    <button onClick={logout}>Logout</button>
-                    </StyledHeader>
-                );
-            default:
-                return;
-        };
-    };
 
     const logout = () => {
         localStorage.removeItem("token");
@@ -138,12 +82,41 @@ function Header(props) {
         console.log("token removido");
     };
 
-    const adiminPage = () => {
-        goToAdminPage(navigate)
-    }
+    const renderHeader = localStorage.getItem("token") ?
+        (
+            <StyledHeader>
+                <button onClick={logout}>Logout</button>
+            </StyledHeader>
+        ) : (
+            <StyledHeader>
+                <h1>LabeX</h1>
+                <form onSubmit={login}>
+                    <label htmlFor={"email"}>Email:</label>
+                    <input
+                        id={"email"}
+                        name={"email"}
+                        type={"text"}
+                        value={email}
+                        onChange={handleInputValues}
+                    ></input>
+                    <br />
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        id={"password"}
+                        name={"password"}
+                        type={"password"}
+                        value={password}
+                        onChange={handleInputValues}
+                    ></input>
+                    <br />
+                    <button type={"submit"}>Sing in</button>
+                </form>
+            </StyledHeader>
+        );
+
     return (
         <div>
-            {renderHeader()}
+            {renderHeader}
             <hr />
         </div>
     );
