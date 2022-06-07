@@ -1,10 +1,10 @@
 import Header from "../../components/Header";
-import { Style } from "./style";
+import { Style, StyleDetails } from "./style";
 
 export default function PostDetailsPage() {
     return (
         <>
-        <Style>
+        <StyleDetails>
             <Header private={true} />
             <button onClick={""}>Voltar</button>
             <h2>Informações do post:</h2>
@@ -36,7 +36,7 @@ export default function PostDetailsPage() {
                     </section>
                 </section>
                 </section>
-                </Style>
+                </StyleDetails>
         </>
     )
 }

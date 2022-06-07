@@ -1,20 +1,48 @@
+import { useContext, useEffect } from "react";
 import Header from "../../components/Header";
-import { Style } from "./style";
+import { PostCard } from "../../components/PostCard";
+import GlobalStateContext from "../../global/GlobalStateContext";
+import useForm from "../../hooks/useForm";
+import { requestCreatPost } from "../../services/requests";
+import { StyleFeed } from "./style";
 
 export default function FeedPage() {
+
+const { form, onChange, clear } = useForm({title: "", body: ""})
+    const { states, getters } = useContext(GlobalStateContext);
+    const { posts } = states;
+    const { getPosts } = getters;
+
+    useEffect(() => {
+        getPosts()
+    }, []);
+
+    const createPost = (e) => {
+        e.preventDefault()
+        requestCreatPost(form,  clear, getPosts)
+
+    }
+    const showPost = posts.length && posts.map((post) => {
+        return (
+            <PostCard
+            key={post.id}
+            post={post}
+            />
+        )
+    })
     return (
         <>
-        <Style>
+        <StyleFeed>
             <Header private={true}/>
-            <section>
-                <h2>Crie um novo post:</h2>
-                <form onSubmit={""}>
-                    <label htmlFor={"title"}> Título: </label>
+            <section className="formCreatePost">
+                <h3>Crie um novo post:</h3>
+                <form onSubmit={createPost}>
+                    <label htmlFor={"título"}> Título: </label>
                     <input
-                        id={"title"}
+                        id={"título"}
                         name={"title"}
-                        value={""}
-                        onChange={""}
+                        value={form.title}
+                        onChange={onChange}
                         pattern={"^.{5,}$"} //???????
                         title={"O nome deve ter no mínimo 5 caracteres"}
                         required
@@ -25,8 +53,8 @@ export default function FeedPage() {
                         id={"body"}
                         type={"text"}
                         name={"body"}
-                        value={""}
-                        onChange={""}
+                        value={form.body}
+                        onChange={onChange}
                         pattern={"^.{5,}$"} //????????
                         title={"O nome deve ter no mínimo 5 caracteres"}
                         required
@@ -35,16 +63,17 @@ export default function FeedPage() {
                     <button type={"submit"}>Criar Post</button>
                 </form>
             </section>
-            <hr/>
-            <section>
+
+            <main>
                 <h2>Feed</h2>
                 <nav>
                     <h4>Selecione uma página:</h4>
-                    <span>Página XX</span>
+                    <span>Página XX </span>
                     <button>Próxima página</button>
                 </nav>
-            </section>
-            </Style>
+                {showPost}
+            </main>
+            </StyleFeed>
         </>
     )
 }

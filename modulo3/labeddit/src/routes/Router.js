@@ -5,7 +5,6 @@ import PostDetailsPage from "../pages/postDetailsPage/PostDetailsPage";
 import RegistrationPage from "../pages/registration/RegistrationPage";
 import ErrorPage from "../pages/errorPage/ErrorPage"
 
-
 export default function Router() {
     return(
         <BrowserRouter>

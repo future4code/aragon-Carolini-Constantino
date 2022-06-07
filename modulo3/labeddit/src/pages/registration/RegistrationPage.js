@@ -1,43 +1,66 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header"
-import { Style } from "./style"
+import useForm from "../../hooks/useForm";
+import { goToFeedPage } from "../../routes/coordinator";
+import { requestRegistragion } from "../../services/requests";
+import { Style, StyleRegistration } from "./style"
 
 export default function RegistrationPage() {
+    const navigate = useNavigate();
+
+    const {form, onChange, clear} = useForm({name:"", email:"", password:""})
+    
+    const registration = (e) => {
+        e.preventDefault(); //previne q a página não atualize sempre q for digitado uma letrinha.Só é usado em forms
+        requestRegistragion(form, clear, navigate)
+    }
+
+    useEffect(() => {
+        const token = window.localStorage.getItem("token")
+        if(token) {
+            goToFeedPage(navigate)
+        }
+    }, [])
     return (
         <>
-        <Style>
+        <StyleRegistration>
             <Header private={false}/>
             <h2>Cadastro:</h2>
-            <form onSubmit={""}>
-                <label htmlFor="name">Nome: </label>
+            <form onSubmit={registration}>
+                <label htmlFor="nome">Nome: </label>
                 <input
-                    id={"name"}
+                    id={"nome"}
+                    name="name"
                     type={"text"}
                     placeholder={"Nome"}
-                    value={""}
-                    onChange={""}
+                    value={form.name}
+                    onChange={onChange}
                     pattern={"^.{3,}$"} //não entendi como funciona esse atributo
                     title={"O nome deve ter no mínimo 3 caracteres"}
                     required
                 />
                 <br />
-                <label htmlFor="name">E-mail: </label>
+                <label htmlFor="email">E-mail: </label>
                 <input
                     id={"email"}
+                    name="email"
                     type={"text"}
                     placeholder={"E-mail"}
-                    value={""}
-                    onChange={""}
+                    value={form.email}
+                    onChange={onChange}
                     required
                 />
                 <br />
-                <label htmlFor="name">Senha: </label>
+                <label htmlFor="senha">Senha: </label>
                 <input
-                    id={"password"}
-                    type={"text"}
+                    id={"senha"}
+                    name="password"
+                    type={"password"}
                     placeholder={"Senha"}
-                    value={""}
-                    onChange={""}
-                    pattern={"^.{8,30}$"} //não entendi como funciona esse atributo
+                    value={form.password}
+                    onChange={onChange}
+                    pattern={"^.{8,30}$"} //não entendi mt bem como funciona esse atributo
                     title={"A senha deve ter no mínimo 8 e no máximo 30 caracteres"}
                     required
                 />
@@ -45,8 +68,8 @@ export default function RegistrationPage() {
                 <button type={"submit"}>Cadastrar</button>
             </form>
             <br />
-            <button onClick={() => { "" }}>Voltar</button>
-            </Style>
+            <button onClick={() => goToFeedPage(navigate)}>Voltar</button>
+            </StyleRegistration>
         </>
     )
 }

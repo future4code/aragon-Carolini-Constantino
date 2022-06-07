@@ -1,8 +1,10 @@
 import Header from "../../components/Header";
-import { Style } from "./style";
+import { StyleLogin } from "./style";
 import useForm from '../../hooks/useForm';
 import { requestLogin } from "../../services/requests";
 import { useNavigate } from "react-router-dom";
+import { goToFeedPage, goToRegistration } from "../../routes/coordinator";
+import { useEffect } from "react";
 
 export default function LoginPage() {
 
@@ -11,13 +13,19 @@ export default function LoginPage() {
     const {form, onChange, clear} = useForm({email:"", password:""})
     
     const login = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //previne q a página não atualize sempre q for digitado uma letrinha.Só é usado em forms
         requestLogin(form, clear, navigate)
     }
 
+    useEffect(() => {
+        const token = window.localStorage.getItem("token")
+        if(token) {
+            goToFeedPage(navigate)
+        }
+    }, [])
     return (
         <>
-        <Style>
+        <StyleLogin>
             <Header private={false}/>
             <h2>Login</h2>
             <form onSubmit={login}>
@@ -28,26 +36,28 @@ export default function LoginPage() {
                     name={"email"}
                     placeholder={"Email"}
                     value={form.email}
-                    onChange={onChange} />
+                    onChange={onChange} 
+                    required />
                 <br />
-                <label htmlFor={"password"}>Senha: </label>
+                <label htmlFor={"senha"}>Senha: </label>
                 <input
-                    id={"password"}
-                    type={"text"}
+                    id={"senha"}
+                    type={"password"}
                     name={"password"}
                     placeholder={"Senha"}
                     value={form.password}
-                    onChange={onChange} />
+                    onChange={onChange} 
+                    required />
                 <br />
                 <button type={"submit"}>Entrar</button>
             </form>
             <hr />
             <section>
                 <h3>Não tem acesso? Crie seu cadastro!</h3>
-                <button onClick={() => { "" }}>Me cadastrar</button>
+                <button onClick={() => goToRegistration(navigate)}>Me cadastrar</button>
             </section>
             <hr />
-            </Style>
+            </StyleLogin>
         </>
     )
 }
