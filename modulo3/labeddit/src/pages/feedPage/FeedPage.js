@@ -9,24 +9,32 @@ import { StyleFeed } from "./style";
 export default function FeedPage() {
 
 const { form, onChange, clear } = useForm({title: "", body: ""})
-    const { states, getters } = useContext(GlobalStateContext);
-    const { posts } = states;
+    const { states, setters, getters } = useContext(GlobalStateContext);
+    const { posts, page, isLoading } = states;
     const { getPosts } = getters;
+    const { setPage } = setters;
 
     useEffect(() => {
-        getPosts()
+        getPosts(page)
     }, []);
 
     const createPost = (e) => {
         e.preventDefault()
         requestCreatPost(form,  clear, getPosts)
 
+    };
+
+    const changePage = (cp) => {
+        const nextPage = page + cp;
+        setPage(nextPage)   
+        getPosts(nextPage)
     }
     const showPost = posts.length && posts.map((post) => {
         return (
             <PostCard
             key={post.id}
             post={post}
+            isFeed={true}
             />
         )
     })
@@ -55,7 +63,7 @@ const { form, onChange, clear } = useForm({title: "", body: ""})
                         name={"body"}
                         value={form.body}
                         onChange={onChange}
-                        pattern={"^.{5,}$"} //????????
+                        pattern={"^.{5,}$"}
                         title={"O nome deve ter no mínimo 5 caracteres"}
                         required
                     />
@@ -68,12 +76,13 @@ const { form, onChange, clear } = useForm({title: "", body: ""})
                 <h2>Feed</h2>
                 <nav>
                     <h4>Selecione uma página:</h4>
-                    <span>Página XX </span>
-                    <button>Próxima página</button>
+                    {page !== 1 && <button onClick={() => changePage(-1)}>Voltar página</button> }
+                    <span>Página {page} </span>
+                    {posts.length && <button onClick={() => changePage(1)}>Próxima página</button>}
                 </nav>
-                {showPost}
+                {isLoading ? <p>Carregando...</p>: showPost}
             </main>
             </StyleFeed>
         </>
     )
-}
+};

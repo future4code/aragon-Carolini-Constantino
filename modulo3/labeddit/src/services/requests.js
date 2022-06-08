@@ -1,5 +1,6 @@
+import { clear } from "@testing-library/user-event/dist/clear";
 import axios from "axios";
-import { BASE_URL } from "../constants/urls"
+import { BASE_URL, HEADER } from "../constants/urls"
 import { goToFeedPage } from "../routes/coordinator";
 
 export const requestLogin = (form, clear, navigate) => {
@@ -29,14 +30,8 @@ export const requestCreatPost = (form, clear, getPosts) => {
         "body": form.body
     };
 
-    const header = {
-        headers: {
-            authorization: localStorage.getItem("token")
-        }
-    };
-
     axios
-        .post(`${BASE_URL}/posts`, body, header)
+        .post(`${BASE_URL}/posts`, body, HEADER)
         .then((res) => {
             alert(res.data);
             getPosts();
@@ -67,4 +62,74 @@ export const requestRegistragion = (form, clear, navigate) => {
             console.log(err)
             clear();
         })
+};
+
+export const requestCreateComment = (form, clear, getPostsComments, postId) => {
+        const body = {
+            body: form.body
+        };
+
+        axios
+        .post(`${BASE_URL}/posts/${postId}/comments`, body, HEADER)
+        .then((res) => {
+            alert(res.data);
+            getPostsComments(postId)
+            clear();
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+};
+
+export const requestCreatePostLike = (postId, direction,getPosts) => {
+    const body = {
+        direction: -1
+    };
+    axios
+    .post(`${BASE_URL}/posts/${postId}/votes`, body,HEADER)
+    .then(() => {
+        alert("Like registrado com sucesso");
+        getPosts()
+    })
+    .catch((err) => {
+        console.log(err.message)
+    }) 
+};
+
+export const requestChangePostLike = (postId, direction, getPosts) => {
+    const body = {
+        direction: -1
+    };
+    axios(`${BASE_URL}/posts/${postId}/votes`, body, HEADER)
+    .put
+    .then(() => {
+        alert("Voto modificado com sucesso!");
+        getPosts();
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
 }
+
+export const requestDeletePostLike = (postId, getPosts) => {
+
+    axios
+    .delete(`${BASE_URL}/posts/${postId}/votes`, HEADER)
+    .then(() => {
+        alert("Like removido com sucesso!");
+        getPosts()
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
+} 
+
+/* export const NOME = () => {
+
+    axios
+    .???(`${BASE_URL})
+    .then((res) => {})
+    .catch((err) => {
+        console.log(err.message)
+    })
+} */
