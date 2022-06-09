@@ -6,52 +6,57 @@ import useForm from "../../hooks/useForm";
 import { requestCreatPost } from "../../services/requests";
 import { StyleFeed } from "./style";
 
-export default function FeedPage() {
-
-const { form, onChange, clear } = useForm({title: "", body: ""})
+function FeedPage() {
+   
+    const { form, onChange, clear } = useForm({ title: "", body: "" });
     const { states, setters, getters } = useContext(GlobalStateContext);
     const { posts, page, isLoading } = states;
-    const { getPosts } = getters;
     const { setPage } = setters;
+    const { getPosts } = getters;
 
     useEffect(() => {
-        getPosts(page)
+        getPosts(page);
     }, []);
 
-    const createPost = (e) => {
-        e.preventDefault()
-        requestCreatPost(form,  clear, getPosts)
 
+    const createPost = (event) => {
+        event.preventDefault();
+        requestCreatPost(form, clear, getPosts);
     };
 
-    const changePage = (cp) => {
-        const nextPage = page + cp;
-        setPage(nextPage)   
-        getPosts(nextPage)
-    }
-    const showPost = posts.length && posts.map((post) => {
+    const changePage = (sum) => {
+        const nextPage = page + sum;
+        setPage(nextPage);
+        getPosts(nextPage);
+    };
+
+    const showPosts = posts.length && posts.map((post) => {
         return (
-            <PostCard
+            <PostCard 
             key={post.id}
             post={post}
             isFeed={true}
             />
         )
     })
+
     return (
-        <>
-        <StyleFeed>
-            <Header private={true}/>
-            <section className="formCreatePost">
-                <h3>Crie um novo post:</h3>
-                <form onSubmit={createPost}>
-                    <label htmlFor={"título"}> Título: </label>
+        <main>
+            <Header
+                isProtected={true}
+            />
+            <hr />
+            <StyleFeed>
+            <section>
+                <h2>Crie um novo Post</h2>
+                <form className="createPost" onSubmit={createPost}>
+                    <label htmlFor={"title"}> Título: </label>
                     <input
-                        id={"título"}
+                        id={"title"}
                         name={"title"}
                         value={form.title}
                         onChange={onChange}
-                        pattern={"^.{5,}$"} //???????
+                        pattern={"^.{5,}$"}
                         title={"O nome deve ter no mínimo 5 caracteres"}
                         required
                     />
@@ -71,18 +76,25 @@ const { form, onChange, clear } = useForm({title: "", body: ""})
                     <button type={"submit"}>Criar Post</button>
                 </form>
             </section>
-
-            <main>
-                <h2>Feed</h2>
+            <hr />
+            <section>
+                <h2>Lista de Posts</h2>
                 <nav>
-                    <h4>Selecione uma página:</h4>
-                    {page !== 1 && <button onClick={() => changePage(-1)}>Voltar página</button> }
-                    <span>Página {page} </span>
-                    {posts.length && <button onClick={() => changePage(1)}>Próxima página</button>}
+                    <h2>Selecione uma página</h2>
+                    {page !== 1 &&
+                        <button onClick={() => changePage(-1)}>Voltar página</button>
+                    }
+                    <span> Página {page} </span>
+                    {posts.length &&
+                        <button onClick={() => changePage(1)}>Próxima página</button>
+                    }
                 </nav>
-                {isLoading ? <p>Carregando...</p>: showPost}
-            </main>
+                <hr />
+                {isLoading ? <p>CARREGANDO...</p> : showPosts}
+            </section>
             </StyleFeed>
-        </>
-    )
+        </main>
+    );
 };
+
+export default FeedPage;

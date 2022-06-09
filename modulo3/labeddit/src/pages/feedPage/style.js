@@ -1,14 +1,26 @@
 import styled from "styled-components";
 
 export const StyleFeed = styled.div`
-.formCreatePost{
-    display: flex;
-    border: 4px solid #DE7E9C;
-    background-color: #f5f3f2;
+background-color: white;
+padding: 0.5%;
+border-bottom: #ededeb solid 1px;
+display: flex;
+justify-content: center;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+  grid-template-columns: 1fr;
+}
+
+.createPost{
     width: 20rem;
     margin: auto;
     padding: 10px;
-    color: #DE7E9C;
+
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px){
+ width: 100%;
+}
 }
 
 button {
@@ -30,6 +42,8 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+  padding: 0.5%;
+  height: 5vh;
 }
 
 button:hover {
@@ -43,14 +57,10 @@ button:focus {
 }
 
 h2{
-  color: #9e7fdb;
+  font-size: large
 }
 
 nav{
-border: 4px solid #c8b7ed;
-background-color: #f2edfc;
-color: #9e7fdb;
-padding-bottom: 1rem;
 
 }
 `;

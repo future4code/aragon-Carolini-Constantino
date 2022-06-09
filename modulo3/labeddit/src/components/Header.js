@@ -1,9 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { goToLoginPage } from "../routes/coordinator";
 import styled from "styled-components";
-import { useEffect } from "react";
+import logo from "../img/logo.png"
 
-const Style = styled.div`
+const StyleHeader = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: white;
+padding: 0.5%;
+border-bottom: #ededeb solid 1px;
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+ display: inline;
+
+}
+img{
+  
+  height: 4rem;
+}
 h1{
     color: #694b49;
     font-size: xxx-large;
@@ -26,13 +41,11 @@ button{
   cursor: pointer;
   display: inline-flex;
   font-family: "JetBrains Mono",monospace;
-  height: 2rem;
+  height: 1.6rem;
   justify-content: center;
   line-height: 1;
   list-style: none;
   overflow: hidden;
-  padding-left: 1rem;
-  padding-right: 1rem;
   position: relative;
   text-align: left;
   text-decoration: none;
@@ -42,7 +55,7 @@ button{
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow,transform;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 button:focus {
@@ -81,16 +94,15 @@ export default function Header(props) {
 
     return(
         <>
-        <Style>
-        <h1>LabEddit</h1>
+        <StyleHeader> 
+        <img src={logo}/>
         {props.private && (
             <>
             <h4>Bem vinde {localStorage.getItem("userEmail")}!</h4>
             <button onClick={logout}>Logout</button>
             </>
         )}
-        <hr/>
-        </Style>
+        </StyleHeader>
         </>
     )
 }

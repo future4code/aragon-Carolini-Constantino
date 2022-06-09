@@ -1,4 +1,3 @@
-import { clear } from "@testing-library/user-event/dist/clear";
 import axios from "axios";
 import { BASE_URL, HEADER } from "../constants/urls"
 import { goToFeedPage } from "../routes/coordinator";
@@ -122,7 +121,49 @@ export const requestDeletePostLike = (postId, getPosts) => {
     .catch((err) => {
         console.log(err.message)
     })
-} 
+};
+
+export const requestChangeCommentVote = (commentId, direction, getPostComments, postId) => {
+    const body = {
+        direction: -1
+    };
+    axios
+    .put(`${BASE_URL}/comments/${commentId}/votes`, body, HEADER)
+    .then((res) => {})
+    alert("Voto modificado com sucesso!");
+    getPostComments(postId)
+    .catch((err) => {
+        console.log(err.message)
+    })
+};
+
+export const requestCreateCommentVote = (commentId, direction, getPostComments, postId) => {
+    const body = {
+        direction: -1
+    };
+    axios
+    .post(`${BASE_URL}/comments/${commentId}/votes`, body, HEADER)
+    .then((res) => {
+        alert("Voto registrado com sucesso!");
+        getPostComments(postId)
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
+};
+
+export const requestDeleteCommentVote = (commentId, getPostComments, postId) => {
+
+    axios
+    .del(`${BASE_URL}/post/${commentId}/votes`, HEADER)
+    .then(() => {
+        alert("Voto removido com sucesso!");
+        getPostComments(postId)
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
+}
 
 /* export const NOME = () => {
 

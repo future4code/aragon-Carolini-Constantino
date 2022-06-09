@@ -1,97 +1,130 @@
 import { format } from "date-fns";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import GlobalStateContext from "../global/GlobalStateContext";
 import { goToPostDetailsPage } from "../routes/coordinator";
-import { requestChangePostLike, requestCreatePostLike, requestDeletePostLike } from "../services/requests";
+import { requestCreatePostLike } from "../services/requests";
+
+const StyledPostCard = styled.div`
+background-color: white;
+width:50vw;
+border-style: solid;
+border-color: #ededeb;
+border-radius: 10px;
+font-size: x-small;
+justify-content: center;
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+ width: 100%;
+}
+
+img{
+    width: 100%;
+    height: 50vh;
+}
+
+button{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 3vh;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 4px;
+  color: #3D3D3D;
+  background: white;
+  box-shadow: 0px 0.5px 1px rgba( #D6D6E7);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:focus {
+  box-shadow: 0px 0.5px 1px rgba( #D6D6E7), 0px 0px 0px 3.5px rgba( #D6D6E7);
+  outline: 0;
+}
+`
 
 export function PostCard(props) {
     const navigate = useNavigate();
-
-    const {setters, getters} = useContext(GlobalStateContext);
-
+    const { setters, getters } = useContext(GlobalStateContext);
+    const [isDownVoted, setIsDownVoted] = useState(false);
+    const [isUpVoted, setIsUpVoted] = useState(false);
     const { setPost } = setters;
-
     const { getPosts } = getters;
+    const { id, userId, title, body, createdAt, voteSum, commentCount, userVote } = props.post;
 
-    const {id, userId, title, body, createAt, voteSum, commentCout, userVote } = props.post;
-
-    const [isDislike, setIsDislike] = useState(false);
-
-    const [isLike, setIsLike] = useState(true)
-
-    const date = createAt && format(new Date(createAt), `dd/MM/yyyy`); //pesquisar sobre isso
+    const date = createdAt && format(new Date(createdAt), "dd/MM/yyyy");
 
     useEffect(() => {
         if (userVote) {
-            userVote === 1 ? setIsLike(true) : setIsDislike(true);
+            userVote === 1 ? setIsUpVoted(true) : setIsDownVoted(true);
         };
     }, [userVote]);
 
     const goToComments = () => {
         setPost(props.post);
-        goToPostDetailsPage(navigate, id)
-        
-    }
-    console.log(goToComments)
-
-    const chooseLike = (typeVote) => {
+        goToPostDetailsPage(navigate, id);
+    };
+    const chooseVote = (typeVote) => {
         if (typeVote === "up") {
-            if (isDislike){
-                requestChangePostLike(id, 1, getPosts);
-                setIsLike(true);
-                setIsDislike(false);
+            if (isDownVoted) {
+                requestCreatePostLike(id, 1, getPosts);
+                setIsUpVoted(true);
+                setIsDownVoted(false);
             } else {
                 requestCreatePostLike(id, 1, getPosts);
-                setIsLike(true)
+                setIsUpVoted(true);
             };
         } else {
-            if (isLike){
-                requestCreatePostLike(id,-1, getPosts);
-                setIsDislike(true);
-                setIsLike(false);
-            } else{
+            if (isUpVoted) {
                 requestCreatePostLike(id, -1, getPosts);
-                setIsDislike(true);
-            }
-        }
+                setIsDownVoted(true);
+                setIsUpVoted(false);
+            } else {
+                requestCreatePostLike(id, -1, getPosts);
+                setIsDownVoted(true);
+            };
+        };
     };
-
-    const removeLike = (typeVote) => {
-        requestDeletePostLike(id, getPosts);
-        typeVote === "up" ? setIsLike(false) : setIsDislike(false);
-    }
-
-    const showButtons = props.isFeed && (
+    const removeVote = (typeVote) => {
+        requestCreatePostLike(id, getPosts);
+        typeVote === "up" ? setIsUpVoted(false) : setIsDownVoted(false);
+    };
+    const showVoteButtons = props.isFeed && (
         <>
-        {userVote && isDislike ?
-            <button onClick={() => removeLike("down")}>Remover voto "Não Gostei"</button>
-            : <button onClick={() => chooseLike("down")}>
-                {isLike ? `Mudar voto para "Não Gostei"` : `Votar em "Não Gostei"`}
-            </button>
-        }
-        <br />
-        {userVote && isLike ?
-            <button onClick={() => removeLike("up")}>Remover voto "Gostei"</button>
-            : <button onClick={() => chooseLike("up")}>
-                {isDislike ? `Mudar voto para "Gostei"` : `Votar em "Gostei"`}
-            </button>
-        }
+            {userVote && isDownVoted ?
+                <button onClick={() => removeVote("down")}>Remover voto "Não Gostei"</button>
+                : <button onClick={() => chooseVote("down")}>
+                    {isUpVoted ? `Mudar voto para "Não Gostei"` : `Votar em "Não Gostei"`}
+                </button>
+            }
+            <br />
+            {userVote && isUpVoted ?
+                <button onClick={() => removeVote("up")}>Remover voto "Gostei"</button>
+                : <button onClick={() => chooseVote("up")}>
+                    {isDownVoted ? `Mudar voto para "Gostei"` : `Votar em "Gostei"`}
+                </button>
+            }
         </>
-    )
-    return(
+    );
+
+    return (
+        <StyledPostCard>
         <article>
             <h3>{title}</h3>
-            <span><b>{userId}</b></span>
+            <span><b>Autor: </b>{userId}</span>
             <p>Criado em {date}</p>
-            <img src={"https://picsum.photos/200/300?random=" + id} alt="Imagem aleatória" />
-            <p>Descrição: {body}</p>
-            <p>Curtidas: {voteSum ? voteSum : 0 }</p>
-           {showButtons}
-    
-            <p>Comentários: {commentCout? commentCout : 0}</p>
-            {props.isFeed && <button onClick={goToComments}>Ver Comentários</button>}
-            <hr/>
+            <img src={"https://picsum.photos/200/300?random=" + id} alt="Imagem aleatória do post" />
+            <p><b>Descrição: </b>{body}</p>
+            <p>Votos: {voteSum ? voteSum : 0}</p>
+            {showVoteButtons}
+            <p>Comentários: {commentCount ? commentCount : 0}</p>
+            {props.isFeed && <button onClick={goToComments}>Ver comentários</button>}
+
         </article>
-    )
-}
+        </StyledPostCard>
+    );
+};
+export default PostCard;

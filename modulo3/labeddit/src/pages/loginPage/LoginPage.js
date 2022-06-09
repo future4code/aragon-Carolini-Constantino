@@ -1,10 +1,10 @@
 import Header from "../../components/Header";
-import { StyleLogin } from "./style";
 import useForm from '../../hooks/useForm';
 import { requestLogin } from "../../services/requests";
 import { useNavigate } from "react-router-dom";
 import { goToFeedPage, goToRegistration } from "../../routes/coordinator";
 import { useEffect } from "react";
+import { StyleLogin } from "./style"
 
 export default function LoginPage() {
 
@@ -25,8 +25,10 @@ export default function LoginPage() {
     }, [])
     return (
         <>
-        <StyleLogin>
+        
             <Header private={false}/>
+            <StyleLogin> 
+            <main>  
             <h2>Login</h2>
             <form onSubmit={login}>
                 <label htmlFor={"email"}>Email: </label>
@@ -51,12 +53,11 @@ export default function LoginPage() {
                 <br />
                 <button type={"submit"}>Entrar</button>
             </form>
-            <hr />
             <section>
-                <h3>Não tem acesso? Crie seu cadastro!</h3>
-                <button onClick={() => goToRegistration(navigate)}>Me cadastrar</button>
+                <h3>Não tem acesso?</h3>
+                <button className="cadastro" onClick={() => goToRegistration(navigate)}><b>Me cadastrar</b></button>
             </section>
-            <hr />
+            </main>
             </StyleLogin>
         </>
     )

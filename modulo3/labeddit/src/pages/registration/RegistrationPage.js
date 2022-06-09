@@ -4,7 +4,8 @@ import Header from "../../components/Header"
 import useForm from "../../hooks/useForm";
 import { goToFeedPage } from "../../routes/coordinator";
 import { requestRegistragion } from "../../services/requests";
-import { Style, StyleRegistration } from "./style"
+import { StyleRegistration } from "./style";
+import back  from "../../img/back.png"
 
 export default function RegistrationPage() {
     const navigate = useNavigate();
@@ -24,8 +25,10 @@ export default function RegistrationPage() {
     }, [])
     return (
         <>
-        <StyleRegistration>
+       
             <Header private={false}/>
+            <StyleRegistration>
+            <main>
             <h2>Cadastro:</h2>
             <form onSubmit={registration}>
                 <label htmlFor="nome">Nome: </label>
@@ -68,7 +71,8 @@ export default function RegistrationPage() {
                 <button type={"submit"}>Cadastrar</button>
             </form>
             <br />
-            <button onClick={() => goToFeedPage(navigate)}>Voltar</button>
+            </main>
+            <img src={back} onClick={() => goToFeedPage(navigate)} />
             </StyleRegistration>
         </>
     )
