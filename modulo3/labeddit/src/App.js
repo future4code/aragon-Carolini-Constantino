@@ -18,7 +18,7 @@ h1, h2, h3, h4, p{
 function App() {
   return (
     <div className="App">
-      <GlobalStyle/>
+      <GlobalStyle />
       <GlobalState>
      <Router/>
      </GlobalState>

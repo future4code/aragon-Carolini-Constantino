@@ -25,7 +25,6 @@ export default function LoginPage() {
     }, [])
     return (
         <>
-        
             <Header private={false}/>
             <StyleLogin> 
             <main>  

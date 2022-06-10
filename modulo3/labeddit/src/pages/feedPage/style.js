@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyleFeed = styled.div`
-background-color: white;
+background-color: #f5f6f7;
 padding: 0.5%;
 border-bottom: #ededeb solid 1px;
 display: flex;
@@ -9,14 +9,18 @@ justify-content: center;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 
-@media screen and (min-device-width: 320px) and (max-device-width: 480px){
-  grid-template-columns: 1fr;
-}
-
 .createPost{
     width: 20rem;
     margin: auto;
     padding: 10px;
+    background-color: white;
+    width:35vw;
+    border-style: solid;
+    border-color: #ededeb;
+    border-radius: 10px;
+    font-size: x-small;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 
     @media screen and (min-device-width: 320px) and (max-device-width: 480px){
  width: 100%;
@@ -61,6 +65,8 @@ h2{
 }
 
 nav{
+.imgButtons{
+  width: 3%;
+}}
 
-}
 `;

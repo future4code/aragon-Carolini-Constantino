@@ -12,7 +12,6 @@ const GlobalState = (props) => {
 
   const getPosts = (currentPage) => {
     setIsLoading(true);
-
     axios
       .get(`${BASE_URL}/posts?page=${currentPage}&size=10`, HEADER)
       .then((res) => {
