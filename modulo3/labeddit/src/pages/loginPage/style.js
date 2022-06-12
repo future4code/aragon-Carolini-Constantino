@@ -48,5 +48,13 @@ form{
             font-size: xx-small
         }
     }
-
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px){
+     
+        main{
+            left: 23%;
+            top: 40%;
+            width: auto;
+        }
+ 
+}
 `

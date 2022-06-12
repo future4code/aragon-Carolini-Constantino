@@ -11,10 +11,6 @@ background-color: white;
 padding: 0.5%;
 border-bottom: #ededeb solid 1px;
 
-@media screen and (min-device-width: 320px) and (max-device-width: 480px){
- display: inline;
-
-}
 img{
   
   height: 4rem;
@@ -72,8 +68,20 @@ button:active {
   transform: translateY(2px);
 }
 
-alert{
-    
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+ display: block;
+ padding-bottom: 10px;
+width: 100vw;
+ background-color: white;
+ margin: 2px;
+ border-color: white;
+ text-align: center;
+ h4{
+  font-size: small;
+ }
+ button{
+  height: 20%;
+ }
 }
 `
 

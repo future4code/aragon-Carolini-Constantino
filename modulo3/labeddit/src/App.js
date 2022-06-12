@@ -13,8 +13,16 @@ body{
 h1, h2, h3, h4, p{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 } 
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+    body{
+    display: flexbox;
+    margin: 0;
+    border: none;
+    width: 50vw;
+    height: 100vh;
+    }
+  }
 `
-
 function App() {
   return (
     <div className="App">

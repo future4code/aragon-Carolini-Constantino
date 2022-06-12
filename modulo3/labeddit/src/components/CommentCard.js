@@ -7,6 +7,8 @@ import { requestChangeCommentVote, requestCreateCommentVote, requestDeleteCommen
 const StyledButtons = styled.div`
 display: flex;
 gap: 3px;
+justify-content: center;
+width: 100%;
 button {
   background-color: #fff;
   border: 1px solid #d5d9d9;
@@ -18,8 +20,8 @@ button {
   display: inline-block;
   font-family: "Amazon Ember",sans-serif;
   font-size: 0.7rem;
-  color: #518ef0;
-  line-height: 29px;
+  color: purple;
+  line-height: 15px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -27,8 +29,8 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  padding: 0.5%;
-  height: 4vh;
+  
+  
 }
 
 button:hover {
@@ -39,6 +41,24 @@ button:focus {
   border-color: #008296;
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
   outline: 0;
+}
+
+main{
+    display: inline;
+    width: 100%;
+    margin: auto;
+    padding: 1%;
+    background-color: white;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: #ededeb;
+
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+ display: flex;
+ width: 100%;
+ 
 }
 `
 export function CommentCard(props) {
@@ -102,11 +122,16 @@ export function CommentCard(props) {
 
     return(
        <article>
-            <h3>{body}</h3>
-            <h6>Autor: {userId}</h6>
+            <StyledButtons>
+            <main>
+            <p><b>Autor: {userId}</b></p>
+            <p><i>{body}</i></p>
+            </main>
+            </StyledButtons>
             <p>criado em {date}</p>
             <p>Likes: {voteSum ? voteSum : 0}</p>
             {showVoteButtons}
+            <hr/>
         </article>
     )
 }

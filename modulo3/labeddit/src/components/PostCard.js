@@ -13,9 +13,6 @@ border-color: #ededeb;
 border-radius: 10px;
 font-size: x-small;
 
-@media screen and (min-device-width: 320px) and (max-device-width: 480px){
- width: 100%;
-}
 p, h3, span, button{
     margin: 3%;
     font-family: Arial, Helvetica, sans-serif;
@@ -35,18 +32,28 @@ display: inline;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
   border-radius: 4px;
-  color: #3D3D3D;
+  color: purple;
   background: white;
   box-shadow: 0px 0.5px 1px rgba( #D6D6E7);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  line-height: 15px;
 
 }
 
 button:focus {
   box-shadow: 0px 0.5px 1px rgba( #D6D6E7), 0px 0px 0px 3.5px rgba( #D6D6E7);
   outline: 0;
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+    display: flex;
+    width: 100vw;
+    text-align: center;
+ .fotoPost{
+    width: 100vw;
+    height: 45vh;
+}
 }
 `
 

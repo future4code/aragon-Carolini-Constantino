@@ -21,10 +21,6 @@ grid-template-columns: 1fr 1fr 1fr;
     font-size: x-small;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-
-    @media screen and (min-device-width: 320px) and (max-device-width: 480px){
- width: 100%;
-}
 }
 
 button {
@@ -68,5 +64,13 @@ nav{
 .imgButtons{
   width: 3%;
 }}
+@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+  display: block;
+  width: 100vw;
+  text-align: center;
+  .createPost{
+    width: 70vw;
+  }
 
+}
 `;

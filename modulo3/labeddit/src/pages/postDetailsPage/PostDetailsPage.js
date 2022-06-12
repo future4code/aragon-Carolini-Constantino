@@ -49,7 +49,7 @@ return (
             <nav>
             <img src={back} onClick={() => navigate(-1)}/>
             </nav>
-           
+           <br/>
             <main>
             <section>
             <h2>Informações do post:</h2>
