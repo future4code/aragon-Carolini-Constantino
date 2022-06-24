@@ -18,3 +18,4 @@ function validacaoDeChavesDeObj(obj) {
 }
 
 console.log(validacaoDeChavesDeObj({ id: 1, name: "Carol", email: "carol@gmail.com" }));
+console.log(validacaoDeChavesDeObj({ id: 1, name: undefined, email: undefined }));
