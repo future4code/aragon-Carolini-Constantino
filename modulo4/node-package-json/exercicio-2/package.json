@@ -1,0 +1,13 @@
+{
+  "name": "string-operacao-matematica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "calcula": "node ./operacaoMatematica.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
