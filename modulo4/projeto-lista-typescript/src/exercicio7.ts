@@ -1,9 +1,10 @@
-const ajustaPreco = (preco :number): string => {
-	const valorAjustado: string = preco.toFixed(2).replace('.', ',')
-	return "R$ "+valorAjustado
+type TypeProd = {
+	nome: string,
+	quantidade: number,
+	valorUnitario: number | string
 }
 
-[
+const produtos:TypeProd[] = [
 	{ nome: "MacMugffin", quantidade: 37, valorUnitario: 51.040},
 	{ nome: "Vassoura voadora", quantidade: 56, valorUnitario: 210.0},
 	{ nome: "Laço da verdade", quantidade: 32, valorUnitario: 571.5},
@@ -12,3 +13,17 @@ const ajustaPreco = (preco :number): string => {
 	{ nome: "Plumbus", quantidade: 13, valorUnitario: 140.44},
 	{ nome: "Pokebola", quantidade: 200, valorUnitario: 99.9915}
 ]
+
+const ajustaPreco = (preco :number): string => {
+	const valorAjustado: string = preco.toFixed(2).replace('.', ',')
+	return "R$ "+valorAjustado
+}
+//receber a lista e ajustar os preços
+function geraListaOrdenada(lista:TypeProd[]):any{
+	return lista.map(produto =>{
+		const valorAjustado:string = produto.valorUnitario.toFixed(2).replace('.', ',')
+	return "R$ "+valorAjustado
+	})
+}
+
+console.log(geraListaOrdenada(produtos))
