@@ -1,4 +1,4 @@
-type Cliente = {
+/*type Cliente = {
     cliente: string,
     saldoTotal: number,
     debitos: number[]
@@ -24,4 +24,4 @@ function pessoasEmDebito(lista:Cliente[]):Cliente[] {
    }).filter(pessoa => pessoa.saldoTotal <= 0)//filtra e retorna apena as pessoas com saltoTotal menor q zero
 } //o filter está sendo feito na lista mapeada(atualizada) anteriormente
 
-console.log(pessoasEmDebito(clientes)) 
+console.log(pessoasEmDebito(clientes)) */

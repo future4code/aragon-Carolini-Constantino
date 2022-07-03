@@ -1,9 +1,8 @@
 type TypeProd = {
 	nome: string,
 	quantidade: number,
-	valorUnitario: number | string
+	valorUnitario: any 
 }
-
 const produtos:TypeProd[] = [
 	{ nome: "MacMugffin", quantidade: 37, valorUnitario: 51.040},
 	{ nome: "Vassoura voadora", quantidade: 56, valorUnitario: 210.0},
@@ -13,16 +12,22 @@ const produtos:TypeProd[] = [
 	{ nome: "Plumbus", quantidade: 13, valorUnitario: 140.44},
 	{ nome: "Pokebola", quantidade: 200, valorUnitario: 99.9915}
 ]
-
-const ajustaPreco = (preco :number): string => {
-	const valorAjustado: string = preco.toFixed(2).replace('.', ',')
-	return "R$ "+valorAjustado
-}
-//receber a lista e ajustar os preços
-function geraListaOrdenada(lista:TypeProd[]):any{
+function geraListaOrdenada(lista:TypeProd[]):TypeProd[]{
 	return lista.map(produto =>{
-		const valorAjustado:string = produto.valorUnitario.toFixed(2).replace('.', ',')
-	return "R$ "+valorAjustado
+		const valorAjustado:any = produto.valorUnitario.toFixed(2).replace('.', ',')
+//Não soube como tipar a const acima sem utilizar o any
+
+	const produtoAtulizado:TypeProd = {
+		nome: produto.nome,
+		quantidade: produto.quantidade,
+		valorUnitario: "R$ " + valorAjustado
+	}
+	return produtoAtulizado
+	}).sort((a, b) => {
+		if (a.quantidade < b.quantidade)
+		  return -1;
+		if (a.quantidade > b.quantidade)
+		    return 1;
 	})
 }
 
