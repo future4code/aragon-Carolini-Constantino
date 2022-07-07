@@ -6,6 +6,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
+
 //EXERCÍCIO 1
 app.get("/test", (req: Request, res: Response) => {
     try {
@@ -26,26 +27,27 @@ app.get("/products", (req: Request, res: Response) => {
 //EXERCÍCIO 4
 
 app.post("/products", (req: Request, res: Response) => {
+    let errorCode: number = 400;
     try {
         const { name, price } = req.body
 
         if (name === "" || price === null) {
-            res.statusCode = 400
+            errorCode = 422
             throw new Error("Request failed. Check that the 'name' and 'price' fields are filled in.");
         }
 
         if (typeof name !== "string") {
-            res.statusCode = 400
+            errorCode = 422
             throw new Error("Invalid type, 'name' must be a string.");
         }
 
         if (typeof price !== "number") {
-            res.statusCode = 400
+            errorCode = 422
             throw new Error("Invalid type, 'price' must be a number.");
         }
 
         if (price <= 0) {
-            res.statusCode = 400
+            errorCode = 422
             throw new Error("Invalid request. The price must be greater than zero.");
         }
 
@@ -60,57 +62,76 @@ app.post("/products", (req: Request, res: Response) => {
         res.status(201).send({ messagem: 'Request  successfully executed', products })
 
     } catch (error) {
+        if(res.statusCode === 200){
+            res.status(500).end();
+        }else{
         res.status(500).send({ messagem: error.message })
+        }
     }
 })
 //EXERCÍCIO 5
 
 app.put("/products/:id", (req: Request, res: Response) => {
+    let errorCode: number = 400;
     try {
-        const id = req.params.id
-        const { price } = req.body
-        const index = products.findIndex(product => product.id === id)
+            const id = req.params.id
+            const { price } = req.body
+    
+                if (!price) {//verifica se o novo preço foi inserido.
+                    errorCode = 422
+                    throw new Error("Error: 'id' not exist.")
+                }
+                if (typeof price !== "number") {
+                    errorCode = 422;
+                    throw new Error("Product price must be a number.");
+                };
+                if (price <= 0) {
+                    errorCode = 422
+                    throw new Error("Invalid request. The price must be greater than zero.");
+                }
+                
+                const productIndex = products.findIndex(product => product.id === id)//retorna o index do produt solicitado ex: 2 = id2
+                
+                if (productIndex === -1) {
+                    errorCode = 422
+                    throw new Error("Error: 'id' does not exist.")
+                }
 
-        const productsUpdatePrice = products.map(product => {
-            if (index === -1) {
-                res.statusCode = 422
-                throw new Error("Error: 'id' does not exist.")
-            }
-            if (price === null) {
-                res.statusCode = 422
-                throw new Error("Error: 'id' does not exist.")
-            }
-            if (price <= 0) {
-                res.statusCode = 400
-                throw new Error("Invalid request. The price must be greater than zero.");
-            }
+                products[productIndex].price = price
+                res.status(201).send({ messagem: 'Request  successfully executed.', product: products[productIndex]})
 
-            product.price = price
-            return products
-        })
-        
-        
-        res.status(201).send({ messagem: 'Request  successfully executed.', products: productsUpdatePrice})
     } catch (error) {
-        res.status(500).send({ messagem: error.message })
+        if (res.statusCode === 200) {
+            res.status(500).end();
+        } else {
+            res.status(errorCode).send(error.message);
+        };
     }
 })
 //EXERCÍCIO 6
 
 app.delete("/products/:id", (req: Request, res: Response) => {
+    let errorCode: number = 400;
     try {
-        const id = req.params.id
+        const {id} = req.params
 
-        if (id !== "") {
-            const index = products.findIndex(product => product.id === id)
-            products.splice(index, 1)
-            res.status(201).send({ messagem: 'Product successfully deleted' })
-        } else {
-            res.statusCode = 404
-            throw new Error("Non-existent id.")
+        const indexProduct = products.findIndex(product => product.id === id)
+        
+        if (indexProduct < 0){
+            errorCode = 422
+            throw new Error("Id doesnt match a valid product");
+            
         }
+
+        products.splice(indexProduct, 1)
+        
+    res.status(201).send({ messagem: 'Product successfully deleted' })
     } catch (error) {
-        res.status(500).send({ messagem: error.message })
+        if (res.statusCode === 200) {
+            res.status(500).end();
+        } else {
+            res.status(errorCode).send(error.message);
+        };
     }
 })
 
