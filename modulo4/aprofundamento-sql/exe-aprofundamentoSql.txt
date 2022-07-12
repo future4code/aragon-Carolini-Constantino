@@ -1,0 +1,61 @@
+-- Exercício 1 --
+create table Projects (
+id varchar(255) primary key,
+name varchar(255) unique not null,
+title varchar(255) not null,
+date date not null
+);
+
+select * from Projects;
+ 
+-- Exercício 2 --
+insert into Projects
+values ("001", "LabeSky", "LSy", "2023/10/05"),
+	   ("002", "LabeFy", "LFy", "2024/01/06"),
+       ("003", "AstroZoom", "AZm", "2022/12/20");
+       
+-- Exercício 3 --
+A)
+alter table Projects
+drop column title;
+
+describe Projects;
+
+B)
+alter table Projects
+change date dueDate date not null;
+
+C)
+alter table Users_List
+modify email varchar(255) not null unique;
+
+-- Exercício 4 --
+ select * from Projects;
+A)
+alter table Projects
+add description varchar(255) not null;
+ 
+ B)
+ update Projects
+ set description = "Projeto de sistema em nuvem da Labenu." 
+ where id = "001";
+ 
+ update Projects
+ set description = "Projeto de sistema de gerenciamento de músicas da Labenu." 
+ where id = "002";
+ 
+ update Projects
+ set description = "Projeto de rede de comunicação da Labenu."
+ where id = "003";
+ 
+ -- Exercício 5 --
+A)
+ select *
+ from Projects
+ order by dueDate DESC;
+ 
+B)
+select name, dueDate
+from Projects
+order by dueDate DESC
+limit 2;
