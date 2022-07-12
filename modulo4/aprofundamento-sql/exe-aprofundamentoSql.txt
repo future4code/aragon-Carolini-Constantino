@@ -57,5 +57,5 @@ A)
 B)
 select name, dueDate
 from Projects
-order by dueDate DESC
+order by dueDate ASC
 limit 2;
