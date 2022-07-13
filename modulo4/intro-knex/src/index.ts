@@ -91,7 +91,6 @@ app.put("/users/:id", async (req: Request, res: Response) => {
     const { email } = req.body //qual a diferença entre id pelo params e pelo body?
     console.log(email)
 
-/*
     if(!id || !email){
       throw new Error("Invalid parameters");
     }
@@ -104,10 +103,10 @@ app.put("/users/:id", async (req: Request, res: Response) => {
     if(!email.includes("@")){
       throw new Error("Invalid email");
     }
-*/
+
    await connection.raw(`
    UPDATE Users_List
-   SET email = ${email}
+   SET email = "${email}"
    WHERE id = ${id}
    `)
     
