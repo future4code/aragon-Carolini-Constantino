@@ -7,6 +7,17 @@ export const userResponsibleTask = async (req: Request, res: Response) => {
 
     const taskId = req.params.taskId as string
 
+    const [checkTaskId] = await connection.raw(`
+    SELECT id
+    FROM Tasks
+    WHERE id = "${taskId}";
+    `)
+
+    if(!checkTaskId[0]){
+      errorCode = 400
+      throw new Error("Non-existent task.");
+    }
+
     const [result] = await connection.raw(`
     SELECT
     Users.id,
@@ -17,7 +28,6 @@ export const userResponsibleTask = async (req: Request, res: Response) => {
     WHERE Responsibles.taskId = ${taskId};
     `)
     
-
     res.status(200).send({ message: "Request made successfully.", user: result })
   } catch (error) {
     res.status(errorCode).send({ message: error.message })

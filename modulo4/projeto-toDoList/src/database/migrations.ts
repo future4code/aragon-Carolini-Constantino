@@ -3,7 +3,7 @@ import { responsibles, tasks, users } from "./data";
 
 // Variáveis table -> Definem o nome de cada tabela do banco de dados.
 const table_users = "Users";
-const table_tasks = "Tasks";//tarefas
+const table_tasks = "Tasks";
 const table_responsibles = "Responsibles";
 
 // createTables -> Função que criar as tabelas do sistema ToDoList e que executa a função insertData.
@@ -24,12 +24,12 @@ const createTables = async () => {
 	            dueDate DATE NOT NULL,
 	            status ENUM ("TO_DO", "DOING", "DONE") DEFAULT "TO_DO",
 	            creatorUserId VARCHAR(255) NOT NULL,
-	            FOREIGN KEY (creatorUserId) REFERENCES ${table_users}(id) 
+	            FOREIGN KEY (creatorUserId) REFERENCES ${table_users}(id)
             );
 
             CREATE TABLE IF NOT EXISTS ${table_responsibles}(
                 userId VARCHAR(255) NOT NULL,
-                taskId VARCHAR(255) NOT NULL,
+                taskId VARCHAR(255) UNIQUE NOT NULL,
                 FOREIGN KEY (userId) REFERENCES ${table_users}(id),
                 FOREIGN KEY (taskId) REFERENCES ${table_tasks}(id)
             );
@@ -39,7 +39,7 @@ const createTables = async () => {
             console.log("Tables created successfully!");
 
             // Invocação da função de inserir dados (insertData).
-            insertData();//ñ entendi ----------------------------------------------------------------------------------
+            insertData();
         })
         .catch((error: any) => printError(error));
 };
@@ -47,8 +47,8 @@ const createTables = async () => {
 // Função insertData -> Responsável por inserir os dados de usuários, tarefas e responsáveis no sistema.
 const insertData = async () => {
     try {
-        await connection(table_users) //pegar a tabela User e...
-            .insert(users)//inserir a lista User q vem da data.ts
+        await connection(table_users)
+            .insert(users)
             .then(() => console.log(`${table_users} inserted!`))
             .catch((error: any) => printError(error));
 

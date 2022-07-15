@@ -6,8 +6,7 @@ export const getUser = async (req: Request, res: Response) => {
     let errorCode = 400
     try {
       const search = req.query.search as string
-      console.log(search)
-
+      
       if(search){
         const [result] = await connection.raw(`
         SELECT * FROM Users
