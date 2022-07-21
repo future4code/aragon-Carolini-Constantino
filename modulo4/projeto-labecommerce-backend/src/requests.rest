@@ -1,0 +1,33 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Endpoint registerUser
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "email": "juca@gmail.com",
+    "password": "eujrtrfh"
+}
+
+### Endpoint getUser
+GET http://localhost:3003/users
+Content-Type: application/json 
+
+{
+    "id": "102"
+}
+
+
+### Endpoint
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "105",
+    "product_id": "204",
+    "quatity": 2
+}
+
+### 6
+GET http://localhost:3003/users/102/purchases
