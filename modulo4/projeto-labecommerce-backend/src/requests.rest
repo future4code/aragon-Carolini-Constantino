@@ -10,24 +10,31 @@ Content-Type: application/json
     "password": "eujrtrfh"
 }
 
-### Endpoint getUser
+### Endpoint getUsers
 GET http://localhost:3003/users
-Content-Type: application/json 
+
+
+### Endpoint registerProduct
+POST http://localhost:3003/products
+Content-Type: application/json
 
 {
-    "id": "102"
+    "name": "Manta tricot",
+    "price": 380
 }
 
+### Endpoint getProducts
+GET http://localhost:3003/products
 
-### Endpoint
+### Endpoint newPurchasesOfProduct
 POST http://localhost:3003/purchases
 Content-Type: application/json
 
 {
     "user_id": "105",
     "product_id": "204",
-    "quatity": 2
+    "quantity": 2
 }
 
-### 6
-GET http://localhost:3003/users/102/purchases
+### Endpoint getPurchases
+GET http://localhost:3003/users/103/purchases

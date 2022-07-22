@@ -6,12 +6,13 @@ import { Purchase } from "../models/Purchase"
 export const newPurchaseOfProduct = async (req: Request, res: Response) => {
     let errorCode = 400
     try {
-        const { user_id, product_id } = req.body
+        const user_id = req.body.user_id
+        const product_id = req.body.product_id
         const quantity = Number(req.body.quantity)
-
+        console.log({user_id: user_id, product_id: product_id, quantity: quantity})
         if (!user_id || !product_id || !quantity) {
             errorCode = 404
-            throw new Error("Parameters 'id', ùser_id`, quantity and/or `product_id` non-existent.")
+            throw new Error("Parameters 'user_id', `product_id` and/or ´quantity´ non-existent.")
         }
 
         if (typeof user_id !== "string" || typeof product_id !== "string") {
@@ -63,7 +64,7 @@ export const newPurchaseOfProduct = async (req: Request, res: Response) => {
                 total_price: newPurchase.total_price
             })
 
-        res.status(200).send({ message: "User successfully created." })
+        res.status(200).send({ message: "Purchase successfully created." })
     } catch (error) {
         res.status(errorCode).send({ message: error.message })
     }

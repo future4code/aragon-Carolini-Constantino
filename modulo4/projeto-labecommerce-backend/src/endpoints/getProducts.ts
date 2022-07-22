@@ -12,15 +12,18 @@ export const getProducts = async (req: Request, res: Response) => {
         const page = Number(req.query.page) || 1
         const offset = limit * (page - 1)
 
-        if (!id) {
-            errorCode = 404
-            throw new Error("`id` non-exisits.");
+        if (id) {
+            const result = await connection(TABLE_PRODUCTS)
+            .select()
+            .where(id)
+            .orderBy(`${sort}`, `${order}`)
+            .orderBy(`${sort}`, `${order}`)
+            .limit(limit)
+            .offset(offset);
         }
 
         const result = await connection(TABLE_PRODUCTS)
             .select()
-            .where(id)
-            .orderBy(`${sort}`, `${order}`)
             .orderBy(`${sort}`, `${order}`)
             .limit(limit)
             .offset(offset);

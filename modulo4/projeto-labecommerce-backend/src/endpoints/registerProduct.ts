@@ -5,15 +5,15 @@ import { TABLE_PRODUCTS } from "../database/tableName"
 export const registerProduct = async (req: Request, res: Response) => {
 let errorCode = 400
 try {
-    const {id, name} = req.body
+    const {name} = req.body
         const price = Number(req.body.price)
 
-        if (!name || !id || !price) {
+        if (!name || !price) {
             errorCode = 404
-            throw new Error("Parameters 'name', 'id', 'price' and/or 'ml' non-existent.")
+            throw new Error("Parameter 'name' and/or'price' non-existent.")
         }
 
-        if (typeof name !== "string" || typeof id !== "string" ) {
+        if (typeof name !== "string" ) {
             errorCode = 422
             throw new Error("Parameters 'name' and 'id' must be string.")
         }
@@ -27,9 +27,15 @@ try {
             errorCode = 422
             throw new Error("The 'price' parameter must be greater than 0")
         }
+        
+        const newId = await connection(TABLE_PRODUCTS)
+        .select("*")
+        
+        const lastUser = newId[newId.length - 1]
+        const lastId = Number(lastUser.id)
 
         const newProduct = {
-            id: Date.now().toString(),
+            id: (lastId + 1).toString(),
             name: name,
             price: price
         }
