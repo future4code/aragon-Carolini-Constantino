@@ -7,6 +7,9 @@ Final Back-end project, called LabE-Commerce. This project simulates a store sys
 ## API Documentation
 https://documenter.getpostman.com/view/21139411/UzXKVdrC
 
+## Link Heroku
+https://carol-aragon-labecommerce.herokuapp.com/ping
+
 ## Basic features
 -Register new users;
 -Returns the entire list of users or a specific user if the desired user id is passed via body;
