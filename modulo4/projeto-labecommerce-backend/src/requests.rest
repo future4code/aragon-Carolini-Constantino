@@ -1,0 +1,40 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Endpoint registerUser
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "email": "juca@gmail.com",
+    "password": "eujrtrfh"
+}
+
+### Endpoint getUsers
+GET http://localhost:3003/users
+
+
+### Endpoint registerProduct
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Manta tricot",
+    "price": 380
+}
+
+### Endpoint getProducts
+GET http://localhost:3003/products
+
+### Endpoint newPurchasesOfProduct
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "105",
+    "product_id": "204",
+    "quantity": 2
+}
+
+### Endpoint getPurchases
+GET http://localhost:3003/users/103/purchases
