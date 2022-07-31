@@ -1,39 +1,47 @@
 ### Endpoint de teste
 GET http://localhost:3003/ping
 
-### Exercício 1 - Create user
-POST http://localhost:3003/users
+### ENDPOINT CREATE CLASSROOM
+POST http://localhost:3003/classrooms
 Content-Type: application/json
 
 {
-    "email": "teste@gmail.com",
-    "password": "teste123"
+    "name": "Rigel",
+    "module": "1"
 }
 
-### Exercício 2 - Get users
-GET http://localhost:3003/users
+### ENDPOINT GET ACTIVE CLASSROOMS
+GET http://localhost:3003/classrooms
 
-### Exercício 3 - Create product
-POST http://localhost:3003/products
+### ENDPOINT UPDATE MODULE OF CLASSROOM
+PUT http://localhost:3003/classrooms/103
 Content-Type: application/json
 
 {
-    "name": "Teste Product",
-    "price": 500
+    "module": "5"
 }
 
-### Exercício 4 - Get products
-GET http://localhost:3003/products
-
-### Exercício 5 - Create purchase
-POST http://localhost:3003/purchases
+### ENDPOINT CREATE STUDENT
+POST http://localhost:3003/students
 Content-Type: application/json
 
 {
-    "userId": "103",
-    "productId": "203",
-    "quantity": 4
+    "name": "Luisa",
+    "email": "luli@gmail.com",
+    "birthdate": "1995/06/20",
+    "classroom_id": "101"
 }
 
-### Exercício 6 - Get user purchases
-GET http://localhost:3003/users/103/purchases
+### ENDPOINT GET STUDENT BY NAME
+GET http://localhost:3003/students/Lidi
+
+### ENDPOINT UPDATE CLASSROOM OF STUDENT
+PUT http://localhost:3003/classrooms/students/1659097901342
+Content-Type: application/json
+
+{
+    "classroom": "101"
+}
+
+### ENDPOINT GET ALL STUDENTS OF CLASSROOM
+GET http://localhost:3003/students/classrooms/101

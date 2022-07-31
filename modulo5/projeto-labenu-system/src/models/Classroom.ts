@@ -1,60 +1,46 @@
-export enum MODULE {
-    1 = "1",
-    2 = "2",
-    3 = "3",
-    4 = "4",
-    5 = "5",
-    6 = "6"
-}
-
 export interface IClassroomDB {
     id: string,
     name: string,
-    module: MODULE
+    module: string
 }
 
-export  class Classroom {
+export class Classroom {
     constructor(
         private id: string,
         private name: string,
         private students: string[],
-        private module: MODULE,
-       ) {}   
+        private module: number
+    ) {}
+
+    public getId() {
+        return this.id
+    }
+
+    public getName() {
+        return this.name
+    }
+
+    public getStudents() {
+        return this.students
+    }
+
+    public getModule() {
+        return this.module
+    }
+
+    public setId(newId: string) {
+        this.id = newId
+    }
+
+    public setName(newName: string) {
+        this.name = newName
+    }
+
+    public setStudents(newStudents: string[]) {
+        this.students = [...newStudents]
+    }
+
+    public setModule(newModule: number) {
+        this.module = newModule
+    }
 }
-
-
-// export class User {
-//     constructor(
-//         private id: string,
-//         private email: string,
-//         private password: string
-//     ) {
-//         this.id = id
-//         this.email = email
-//         this.password = password
-//     }
-
-//     public getId() {
-//         return this.id
-//     }
-
-//     public getEmail() {
-//         return this.email
-//     }
-
-//     public getPassword() {
-//         return this.password
-//     }
-
-//     public setId(newId: string) {
-//         this.id = newId
-//     }
-
-//     public setEmail(newEmail: string) {
-//         this.email = newEmail
-//     }
-
-//     public setPassword(newPassword: string) {
-//         this.password = newPassword
-//     }
-// }
