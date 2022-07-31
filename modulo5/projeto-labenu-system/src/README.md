@@ -78,7 +78,7 @@ e caso não seja passado nenhum params, retorna toda lista de alunos.
 
 ## Documentação:
 [Postman](https://documenter.getpostman.com/view/21139411/UzXVtZLo)
-[Heroku] (https://git.heroku.com/carol-labenu-system.git)
+[Heroku](https://git.heroku.com/carol-labenu-system.git)
 
 ## Stack utilizada
 
