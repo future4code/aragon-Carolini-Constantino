@@ -1,0 +1,46 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "nickname": "vovó Juju",
+    "email": "juju@email.com",
+    "password": "abc123"
+}
+
+### Get all recipes (arrumar)
+GET http://localhost:3003/recipes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNmOTdiZDhkLWZjN2ItNDExNi1hMmE3LTkzMmNkNWFkNDVmYiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NTc2MDcsImV4cCI6MTY1OTY0NDAwN30.edNpoYZNNBtwUNJ3lNZNhVawhTBubOdMkhFRDLaOAe0
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "juju@email.com",
+    "password": "abc123"
+}
+
+### Create Recipe
+POST http://localhost:3003/recipes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlYjQ3MDdkLWRjZTUtNDAyZi04ODg2LTkzOTI1ZDA4YWJmMSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NTk5MTcsImV4cCI6MTY1OTY0NjMxN30.jVXaGWFuwN-qRBPzOX2Tp9b2dY_SOhEOPO_0t_tnkpw
+Content-Type: application/json
+
+{
+    "title": "Chocolate quente",
+    "description": "ideal para se aquecer no inverno"
+}
+
+### Edit Recipe
+PUT http://localhost:3003/recipes/3563fa12-8e6f-4172-afd1-46639b37e3b0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlYjQ3MDdkLWRjZTUtNDAyZi04ODg2LTkzOTI1ZDA4YWJmMSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NTk5MTcsImV4cCI6MTY1OTY0NjMxN30.jVXaGWFuwN-qRBPzOX2Tp9b2dY_SOhEOPO_0t_tnkpw
+Content-Type: application/json
+
+{
+    "title": "Mingau de aveia",
+    "description": "pra fazer cocô bonito",
+    "id": "9223e5d2-14b0-4d52-bf76-75d416d2be7a"
+}
