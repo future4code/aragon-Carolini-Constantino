@@ -1,0 +1,47 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### ENDPOINT CREATE CLASSROOM
+POST http://localhost:3003/classrooms
+Content-Type: application/json
+
+{
+    "name": "Rigel",
+    "module": "1"
+}
+
+### ENDPOINT GET ACTIVE CLASSROOMS
+GET http://localhost:3003/classrooms
+
+### ENDPOINT UPDATE MODULE OF CLASSROOM
+PUT http://localhost:3003/classrooms/103
+Content-Type: application/json
+
+{
+    "module": "5"
+}
+
+### ENDPOINT CREATE STUDENT
+POST http://localhost:3003/students
+Content-Type: application/json
+
+{
+    "name": "Luisa",
+    "email": "luli@gmail.com",
+    "birthdate": "1995/06/20",
+    "classroom_id": "101"
+}
+
+### ENDPOINT GET STUDENT BY NAME
+GET http://localhost:3003/students/Lidi
+
+### ENDPOINT UPDATE CLASSROOM OF STUDENT
+PUT http://localhost:3003/classrooms/students/1659097901342
+Content-Type: application/json
+
+{
+    "classroom": "101"
+}
+
+### ENDPOINT GET ALL STUDENTS OF CLASSROOM
+GET http://localhost:3003/students/classrooms/101

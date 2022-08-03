@@ -9,16 +9,16 @@ export const getUserPurchases = async (req: Request, res: Response) => {
 
         const [result] = await connection.raw(`
         SELECT
-            ${TABLE_USERS}.getEmail,
-            ${TABLE_PRODUCTS}.getName AS product_name,
-            ${TABLE_PRODUCTS}.getPrice AS product_price,
-            ${TABLE_PURCHASES}.getQuantity AS product_quantity,
-            ${TABLE_PURCHASES}.getTotal_price
+            ${TABLE_USERS}.email,
+            ${TABLE_PRODUCTS}.name AS product_name,
+            ${TABLE_PRODUCTS}.price AS product_price,
+            ${TABLE_PURCHASES}.quantity AS product_quantity,
+            ${TABLE_PURCHASES}.total_price
         FROM ${TABLE_PURCHASES}
         JOIN ${TABLE_USERS}
-        ON ${TABLE_PURCHASES}.user_id = ${TABLE_USERS}.getId
+        ON ${TABLE_PURCHASES}.user_id = ${TABLE_USERS}.id
         JOIN ${TABLE_PRODUCTS}
-        ON ${TABLE_PURCHASES}.product_id = ${TABLE_PRODUCTS}.getId
+        ON ${TABLE_PURCHASES}.product_id = ${TABLE_PRODUCTS}.id
         WHERE ${TABLE_PURCHASES}.user_id = ${id};
         `)
 
