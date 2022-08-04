@@ -30,11 +30,11 @@ export class UserDatabase extends BaseDatabase {
         return result[0] ? true : false
     }
     
-    public findById = async (creatorId: string) => {
+    public findById = async (idUser: string) => {
         const result: IUserDB[] = await BaseDatabase
             .connection(UserDatabase.TABLE_USERS)
             .select("id")
-            .where({ id: creatorId })
+            .where({ id: idUser })
 
         return result[0]
     }
@@ -45,5 +45,12 @@ export class UserDatabase extends BaseDatabase {
             .where({ email })
         
         return result[0]
+    }
+
+    public deleteUser = async (idUser: string) => {
+        await BaseDatabase
+        .connection(UserDatabase.TABLE_USERS)
+        .delete()
+        .where({ id: idUser })
     }
 }

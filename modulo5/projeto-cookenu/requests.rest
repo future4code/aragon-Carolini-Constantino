@@ -6,41 +6,52 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "nickname": "vovó Juju",
+    "nickname": "Vovó Juju",
     "email": "juju@email.com",
     "password": "abc123"
 }
 
 ### Get all recipes (arrumar)
-GET http://localhost:3003/recipes
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNmOTdiZDhkLWZjN2ItNDExNi1hMmE3LTkzMmNkNWFkNDVmYiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NTc2MDcsImV4cCI6MTY1OTY0NDAwN30.edNpoYZNNBtwUNJ3lNZNhVawhTBubOdMkhFRDLaOAe0
+GET http://localhost:3003/recipes?recipe=&sort=updated_at&order=asc&limit=4&page=1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRmMTZkODQ5LTc3NjktNDFkNC1iZmJkLWZmMzllYzQxZDQzMyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MTQ3ODcsImV4cCI6MTY1OTcwMTE4N30.9mmbIjp3W0GQrRtHPdmbKyFptTBbA8QgWkNcIZa3COw
 
 ### Login
 POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-    "email": "juju@email.com",
-    "password": "abc123"
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
 }
 
 ### Create Recipe
 POST http://localhost:3003/recipes
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlYjQ3MDdkLWRjZTUtNDAyZi04ODg2LTkzOTI1ZDA4YWJmMSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NTk5MTcsImV4cCI6MTY1OTY0NjMxN30.jVXaGWFuwN-qRBPzOX2Tp9b2dY_SOhEOPO_0t_tnkpw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjhlNjhlLTViNGUtNDkxYS1iYTE3LTJiZDAzNDU1ZmI3NiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MzUzODIsImV4cCI6MTY1OTcyMTc4Mn0.t64LoxKZLfTPWM5L77rrgJJ8SRu-i0aoA4bmUJIbZOg
 Content-Type: application/json
 
 {
-    "title": "Chocolate quente",
-    "description": "ideal para se aquecer no inverno"
+    "title": "Batida de abacate",
+    "description": "bem gostosinho"
 }
 
 ### Edit Recipe
-PUT http://localhost:3003/recipes/3563fa12-8e6f-4172-afd1-46639b37e3b0
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlYjQ3MDdkLWRjZTUtNDAyZi04ODg2LTkzOTI1ZDA4YWJmMSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk1NTk5MTcsImV4cCI6MTY1OTY0NjMxN30.jVXaGWFuwN-qRBPzOX2Tp9b2dY_SOhEOPO_0t_tnkpw
+PUT http://localhost:3003/recipes/49a9f542-835d-4020-ae9f-843ffc804c5e
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjhlNjhlLTViNGUtNDkxYS1iYTE3LTJiZDAzNDU1ZmI3NiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MzUzODIsImV4cCI6MTY1OTcyMTc4Mn0.t64LoxKZLfTPWM5L77rrgJJ8SRu-i0aoA4bmUJIbZOg
 Content-Type: application/json
 
 {
     "title": "Mingau de aveia",
-    "description": "pra fazer cocô bonito",
-    "id": "9223e5d2-14b0-4d52-bf76-75d416d2be7a"
+    "description": "pra fazer cocô bonito"
 }
+
+### Delete Recipe
+DELETE http://localhost:3003/recipes/3034162b-1101-4e80-b23c-f5f8a5d888ef
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjhlNjhlLTViNGUtNDkxYS1iYTE3LTJiZDAzNDU1ZmI3NiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MzUzODIsImV4cCI6MTY1OTcyMTc4Mn0.t64LoxKZLfTPWM5L77rrgJJ8SRu-i0aoA4bmUJIbZOg
+
+### Get Recipe
+GET  http://localhost:3003/recipes?recipe=Bife&sort=updated_at&order=asc&limit=4&page=1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTYzNjM5MywiZXhwIjoxNjU5NzIyNzkzfQ.xcY6z75VRRDgvkkyT4DW3dQ0-KsKu9eNbJyUskSA9m0
+
+### Delete User
+DELETE http://localhost:3003/users/f03017bb-2c08-4cdc-bb63-7fbd7cebe01f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTYzNTcyNSwiZXhwIjoxNjU5NzIyMTI1fQ.JFADsFgAoLS0pm8RDg2cUleZqnL93PWHKzleq8DSqB4

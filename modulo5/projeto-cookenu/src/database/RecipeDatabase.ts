@@ -7,12 +7,29 @@ import { UserDatabase } from "./UserDatabase";
 export class RecipeDatabase extends BaseDatabase {
     public static TABLE_RECIPES = "Cookenu_Recipes"
 
-    public getAllRecipes = async () => {
-        const recipesDB: IRecipeDB[] = await BaseDatabase
+    public getAllRecipes = async (sort: string, order: string, limit: number, offset: number, recipe?: string) => {
+        console.log(recipe)
+        if(recipe){
+            const result: IRecipeDB[] = await BaseDatabase
             .connection(RecipeDatabase.TABLE_RECIPES)
             .select()
+            .where("title", "LIKE", `%${recipe}%`)
+            .orderBy(sort, order)
+            .limit(limit)
+            .offset(offset)
 
-        return recipesDB
+            return result
+        }else{
+            const result: IRecipeDB[] = await BaseDatabase
+            .connection(RecipeDatabase.TABLE_RECIPES)
+            .select()
+            .orderBy(sort, order)
+            .limit(limit)
+            .offset(offset)
+
+        return result
+        }
+        
     }
 
     public createRecipe = async (recipe: Recipe) => {
@@ -60,5 +77,37 @@ export class RecipeDatabase extends BaseDatabase {
             .connection(RecipeDatabase.TABLE_RECIPES)
             .update(recipeDB)
             .where({ id: recipeDB.id })
+    }
+
+    public deleteRecipe = async (idRecipe: string) => {
+        await BaseDatabase
+        .connection(RecipeDatabase.TABLE_RECIPES)
+        .delete()
+        .where({ id: idRecipe })
+    }
+
+    public getByTitle = async (recipe: string) => {
+        const result: IRecipeDB[] = await BaseDatabase
+            .connection(RecipeDatabase.TABLE_RECIPES)
+            .select()
+            .where( "title", "LIKE", `%${recipe}%` )
+
+        return result[0]
+    }
+
+    public findAllRecipeOfCreator = async (id: string) => {
+        const result: IRecipeDB[] = await BaseDatabase
+        .connection(RecipeDatabase.TABLE_RECIPES)
+        .select()
+        .where({creator_id: id})
+
+        return result[0]? true : false
+    }
+
+    public deleteAllRecipeOfCreator = async (idUser: string) => {
+        await BaseDatabase
+        .connection(RecipeDatabase.TABLE_RECIPES)
+        .delete()
+        .where({creator_id: idUser})
     }
 }

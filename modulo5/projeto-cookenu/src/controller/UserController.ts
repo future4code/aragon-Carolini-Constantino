@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { RecipeDatabase } from "../database/RecipeDatabase";
 import { UserDatabase } from "../database/UserDatabase";
 import { User, USER_ROLES } from "../models/User";
 import { Authenticator, ITokenPayload } from "../services/Authenticator";
@@ -144,5 +145,68 @@ export class UserController {
         } catch (error) {
             res.status(errorCode).send({ message: error.message })
         }
+    }
+
+    public deleteUser = async (req: Request, res: Response) => {
+        let errorCode = 400
+
+        try {
+            const token = req.headers.authorization
+            const idUser = req.params.idUser
+    
+            const authenticator = new Authenticator()
+            const payload = authenticator.getTokenPayload(token)
+
+            if (!payload) {
+                errorCode = 401
+                throw new Error("Token faltando ou inválido")
+            }
+
+            const userDatabase = new UserDatabase()
+            const isUserExists = await userDatabase.findById(idUser)
+
+            if (!isUserExists) {
+                throw new Error("Usuário inexistente.");
+            }
+            console.log(payload.role)
+
+            if (payload.role === USER_ROLES.NORMAL) {
+
+                if ((idUser !== payload.id)) {
+                    throw new Error("Você só pode excluir a sua própria conta");
+                }
+
+                const recipeDatabase = new RecipeDatabase()
+                const isRecipeExists = await recipeDatabase.findAllRecipeOfCreator(idUser)
+                if (isRecipeExists) {
+                    await recipeDatabase.deleteAllRecipeOfCreator(idUser);
+                    await userDatabase.deleteUser(idUser)
+
+                    return res.status(200).send("Usuário deletado com sucesso!")
+                }
+                else {
+                    await userDatabase.deleteUser(idUser)
+
+                    return res.status(200).send("Usuário deletado com sucesso!")
+                }
+            }
+
+            const recipeDatabase = new RecipeDatabase()
+            const isRecipeExists = await recipeDatabase.findAllRecipeOfCreator(idUser)
+          console.log(isRecipeExists)
+            if (isRecipeExists) {
+                await recipeDatabase.deleteAllRecipeOfCreator(idUser);
+                await userDatabase.deleteUser(idUser)
+
+                return res.status(200).send("Usuário deletado com sucesso!")
+            }
+
+            await userDatabase.deleteUser(idUser)
+
+            res.status(200).send("Usuário deletado com sucesso!")
+        } catch (error) {
+            res.status(errorCode).send({ message: error.message })
+        }
+
     }
 }
