@@ -11,10 +11,6 @@ Content-Type: application/json
     "password": "abc123"
 }
 
-### Get all recipes (arrumar)
-GET http://localhost:3003/recipes?recipe=&sort=updated_at&order=asc&limit=4&page=1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRmMTZkODQ5LTc3NjktNDFkNC1iZmJkLWZmMzllYzQxZDQzMyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MTQ3ODcsImV4cCI6MTY1OTcwMTE4N30.9mmbIjp3W0GQrRtHPdmbKyFptTBbA8QgWkNcIZa3COw
-
 ### Login
 POST http://localhost:3003/users/login
 Content-Type: application/json
@@ -26,7 +22,7 @@ Content-Type: application/json
 
 ### Create Recipe
 POST http://localhost:3003/recipes
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjhlNjhlLTViNGUtNDkxYS1iYTE3LTJiZDAzNDU1ZmI3NiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MzUzODIsImV4cCI6MTY1OTcyMTc4Mn0.t64LoxKZLfTPWM5L77rrgJJ8SRu-i0aoA4bmUJIbZOg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
 Content-Type: application/json
 
 {
@@ -35,8 +31,8 @@ Content-Type: application/json
 }
 
 ### Edit Recipe
-PUT http://localhost:3003/recipes/49a9f542-835d-4020-ae9f-843ffc804c5e
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjhlNjhlLTViNGUtNDkxYS1iYTE3LTJiZDAzNDU1ZmI3NiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MzUzODIsImV4cCI6MTY1OTcyMTc4Mn0.t64LoxKZLfTPWM5L77rrgJJ8SRu-i0aoA4bmUJIbZOg
+PUT http://localhost:3003/recipes/40067838-9b7f-4c07-aff5-d241c26d93c0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
 Content-Type: application/json
 
 {
@@ -45,12 +41,12 @@ Content-Type: application/json
 }
 
 ### Delete Recipe
-DELETE http://localhost:3003/recipes/3034162b-1101-4e80-b23c-f5f8a5d888ef
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjhlNjhlLTViNGUtNDkxYS1iYTE3LTJiZDAzNDU1ZmI3NiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTk2MzUzODIsImV4cCI6MTY1OTcyMTc4Mn0.t64LoxKZLfTPWM5L77rrgJJ8SRu-i0aoA4bmUJIbZOg
+DELETE http://localhost:3003/recipes/40067838-9b7f-4c07-aff5-d241c26d93c0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
 
 ### Get Recipe
-GET  http://localhost:3003/recipes?recipe=Bife&sort=updated_at&order=asc&limit=4&page=1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTYzNjM5MywiZXhwIjoxNjU5NzIyNzkzfQ.xcY6z75VRRDgvkkyT4DW3dQ0-KsKu9eNbJyUskSA9m0
+GET  http://localhost:3003/recipes?recipe=panque&sort=updated_at&order=asc&limit=4&page=1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
 
 ### Delete User
 DELETE http://localhost:3003/users/f03017bb-2c08-4cdc-bb63-7fbd7cebe01f

@@ -35,7 +35,6 @@ class Migrations extends BaseDatabase {
             email VARCHAR(255) NOT NULL UNIQUE,
             password VARCHAR(255) NOT NULL,
             role ENUM("NORMAL", "ADMIN") DEFAULT "NORMAL" NOT NULL
-            
             );
 
         CREATE TABLE IF NOT EXISTS ${RecipeDatabase.TABLE_RECIPES}(

@@ -160,50 +160,7 @@ export class RecipeController {
             res.status(errorCode).send({ message: error.message })
         }
     }
-    public getAllRecipes = async (req: Request, res: Response) => {
-        let errorCode = 400
-        try {
-            const token = req.headers.authorization
-            const sort = req.query.sort as string || "updated_at"
-            const order = req.query.order as string || "asc"
-            const limit = Number(req.query.limit) 
-            const page = Number(req.query.page)
-            const offset = limit * (page - 1)
-            const recipe = req.query.recipe as string 
-
-            if (!token) {
-                errorCode = 401
-                throw new Error("Token faltando")
-            }
-
-            const authenticator = new Authenticator()
-            const payload = authenticator.getTokenPayload(token)
-
-            if (!payload) {
-                errorCode = 401
-                throw new Error("Token inválido")
-            }
-
-            const recipeDatabase = new RecipeDatabase()
-            const recipesDB = await recipeDatabase.getAllRecipes(sort, order, limit, offset, recipe)
-
-            const recipes = recipesDB.map((recipeDB) => {
-                return new Recipe(
-                    recipeDB.id,
-                    recipeDB.title,
-                    recipeDB.description,
-                    recipeDB.created_at,
-                    recipeDB.updated_at,
-                    recipeDB.creator_id
-                )
-            })
-
-            res.status(200).send({ recipes })
-        } catch (error) {
-            res.status(errorCode).send({ message: error.message })
-        }
-    }
-
+    
     public deleteRecipe = async (req: Request, res: Response) => {
         let errorCode = 400
         try {
@@ -257,7 +214,6 @@ export class RecipeController {
             const page = Number(req.query.page)
             const offset = limit * (page - 1)
 
-            console.log(recipe)
             const authenticator = new Authenticator
             const payload = authenticator.getTokenPayload(token)
 

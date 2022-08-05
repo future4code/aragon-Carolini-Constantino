@@ -8,7 +8,7 @@ export class RecipeDatabase extends BaseDatabase {
     public static TABLE_RECIPES = "Cookenu_Recipes"
 
     public getAllRecipes = async (sort: string, order: string, limit: number, offset: number, recipe?: string) => {
-        console.log(recipe)
+    
         if(recipe){
             const result: IRecipeDB[] = await BaseDatabase
             .connection(RecipeDatabase.TABLE_RECIPES)

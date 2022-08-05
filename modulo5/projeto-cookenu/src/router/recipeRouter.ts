@@ -8,8 +8,6 @@ const userController = new UserController()
 
 const recipeController = new RecipeController()
 
-recipeRouter.get("/", recipeController.getAllRecipes)
-
 recipeRouter.post("/", recipeController.createRecipe)
 
 recipeRouter.put("/:idRecipe", recipeController.editRecipe)
