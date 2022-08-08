@@ -1,8 +1,7 @@
-import { Request, Response } from "express"
+import { IRecipeDB } from "../models/Recipe"
 import { IUserDB, User } from "../models/User"
-import { Authenticator, ITokenPayload } from "../services/Authenticator"
-import { HashManager } from "../services/HashManager"
 import { BaseDatabase } from "./BaseDatabase"
+import { RecipeDatabase } from "./RecipeDatabase"
 
 export class UserDatabase extends BaseDatabase {
     public static TABLE_USERS = "Cookenu_Users"
@@ -21,23 +20,6 @@ export class UserDatabase extends BaseDatabase {
             .insert(userDB)
     }
 
-    public checkIfExistsById = async (id: string) => {
-        const result: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .select()
-            .where({ id })
-        
-        return result[0] ? true : false
-    }
-    
-    public findById = async (idUser: string) => {
-        const result: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .select("id")
-            .where({ id: idUser })
-
-        return result[0]
-    }
     public findByEmail = async (email: string) => {
         const result: IUserDB[] = await BaseDatabase
             .connection(UserDatabase.TABLE_USERS)
@@ -47,10 +29,19 @@ export class UserDatabase extends BaseDatabase {
         return result[0]
     }
 
-    public deleteUser = async (idUser: string) => {
+    public findById = async (id: string) => {
+        const result: IUserDB[] = await BaseDatabase
+            .connection(UserDatabase.TABLE_USERS)
+            .select()
+            .where({ id })
+        
+        return result[0]
+    }
+
+    public deleteUserById = async (id: string) => {
         await BaseDatabase
-        .connection(UserDatabase.TABLE_USERS)
-        .delete()
-        .where({ id: idUser })
+            .connection(UserDatabase.TABLE_USERS)
+            .delete()
+            .where({ id })
     }
 }
