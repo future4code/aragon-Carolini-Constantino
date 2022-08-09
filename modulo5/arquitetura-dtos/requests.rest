@@ -1,0 +1,38 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### 1) Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Beltrano",
+    "email": "beltrano@gmail.com",
+    "password": "abc123"
+}
+
+### 2) Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### 3) Get users
+GET http://localhost:3003/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDA2NjI0OCwiZXhwIjoxNjYwMTUyNjQ4fQ.n0BOWiwMhfrFcCLsuKdJjom3wBPSL_aPhY_Iz3JMbvM
+
+### 3) Delete user
+DELETE http://localhost:3003/users/6cb40d26-1376-4acc-8ed7-91a41b020f71
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDA2NjI0OCwiZXhwIjoxNjYwMTUyNjQ4fQ.n0BOWiwMhfrFcCLsuKdJjom3wBPSL_aPhY_Iz3JMbvM
+
+### 4) Edit user
+PUT http://localhost:3003/users/6cb40d26-1376-4acc-8ed7-91a41b020f71
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDA2NjI0OCwiZXhwIjoxNjYwMTUyNjQ4fQ.n0BOWiwMhfrFcCLsuKdJjom3wBPSL_aPhY_Iz3JMbvM
+Content-Type: application/json
+
+{
+    "email": "be@gmail.com"
+}
