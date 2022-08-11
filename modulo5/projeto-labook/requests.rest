@@ -1,0 +1,38 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Carol",
+    "email": "caro@gmail.com",
+    "password": "oioi"
+}
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### Created Post
+POST http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDI1MDU2OSwiZXhwIjoxNjYwMzM2OTY5fQ.jl8G61mrRVxH9mca6lqCxu2zdlj1RALS-0iKda8z1TY
+Content-Type: application/json
+
+{ 
+    "content": "Hello world!" 
+}
+
+### Get Posts
+GET http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDI1MDU2OSwiZXhwIjoxNjYwMzM2OTY5fQ.jl8G61mrRVxH9mca6lqCxu2zdlj1RALS-0iKda8z1TY
+
+### Delete Post
+DELETE  http://localhost:3003/posts/a097d2d6-622b-4ab6-98a5-2fafa14039d2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDI1MDU2OSwiZXhwIjoxNjYwMzM2OTY5fQ.jl8G61mrRVxH9mca6lqCxu2zdlj1RALS-0iKda8z1TY
