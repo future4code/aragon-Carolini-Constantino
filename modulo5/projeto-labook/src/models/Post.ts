@@ -84,3 +84,29 @@ export interface IDeletePostInput {
     token: string,
     idToDelete: string
 }
+
+export interface ILikeInput {
+    token: string,
+    post_id: string
+}
+
+export interface IFindInputDB {
+    post_id: string,
+    userId: string
+}
+export interface ILikePostDB {
+    post_id: string,
+    user_id: string
+}
+
+export interface IDeslikeInput {
+    token: string,
+    post_id: string
+}
+
+export interface IDeslikePostDB {
+    post_id: string,
+    user_id: string
+}
+
+

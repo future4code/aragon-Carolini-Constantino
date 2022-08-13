@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { PostBusiness } from "../business/PostBusiness";
-import { ICreatePostInput, IDeletePostInput, IGetPostsInput, IPostDB } from "../models/Post";
+import { ICreatePostInput, IDeletePostInput, IDeslikeInput, IGetPostsInput, ILikeInput } from "../models/Post";
 
 export class PostController {
     constructor(
@@ -39,7 +39,7 @@ export class PostController {
             }
     
             const posts = await this.postBusiness.getPosts(input)
-console.log(posts)
+
             res.status(201).send(posts)
         } catch (error) {
             res.status(400).send({ message: error.message })
@@ -54,12 +54,40 @@ console.log(posts)
                 idToDelete: req.params.id
             }
     
-            const posts = await this.postBusiness.deletePost(input)
+            const response = await this.postBusiness.deletePost(input)
 
-            res.status(201).send("Post deletado com sucesso")
+            res.status(201).send({ message: response })
         } catch (error) {
             res.status(400).send({ message: error.message })
 
+        }
+    }
+
+    public likePost = async (req: Request, res: Response) => {
+        try {
+            const input: ILikeInput = {
+                token: req.headers.authorization,
+                post_id: req.body.id
+            }
+          
+            await this.postBusiness.likePost(input)
+            res.status(201).send("Post curtido com sucesso")
+        } catch (error) {
+            res.status(400).send({ message: error.message })
+        }
+    }
+
+    public dislikePost = async (req: Request, res: Response) => {
+        try {
+            const input: IDeslikeInput = {
+                token: req.headers.authorization,
+                post_id: req.body.id
+            }
+
+            await this.postBusiness.dislikePost(input)
+            res.status(201).send("Like deletado com sucesso")
+        } catch (error) {
+            res.status(400).send({ message: error.message })
         }
     }
 

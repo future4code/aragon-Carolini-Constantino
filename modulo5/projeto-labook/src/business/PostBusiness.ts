@@ -1,14 +1,11 @@
 import { PostDatabase } from "../database/PostDatabase"
-import { UserDatabase } from "../database/UserDatabase"
-import { ICreatePostInput, IDeletePostInput, IGetPostsDB, IGetPostsInput, Post } from "../models/Post"
+import { ICreatePostInput, IDeletePostInput, IDeslikeInput, IGetPostsDB, IGetPostsInput, ILikeInput, Post } from "../models/Post"
 import { USER_ROLES } from "../models/User"
 import { Authenticator } from "../services/Authenticator"
-import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
 
 export class PostBusiness {
     constructor(
-        private userDatabase: UserDatabase,
         private idGenerator: IdGenerator,
         private authenticator: Authenticator,
         private postDatabase: PostDatabase
@@ -116,5 +113,69 @@ export class PostBusiness {
         }
 
         return response
+    }
+
+    public likePost = async (input: ILikeInput) => {
+        const { token, post_id } = input
+
+        const payload = this.authenticator.getTokenPayload(token)
+
+        if (!payload) {
+            throw new Error("Token inválido");
+        }
+
+        const isExistPost = await this.postDatabase.findPostById(post_id)
+
+        if (!isExistPost) {
+            throw new Error("Post não existe.");
+        }
+
+        const userId = payload.id
+        const findInput = { post_id, userId}
+
+        const isExistLike = await this.postDatabase.findLike(findInput)
+
+        if (isExistLike) {
+            throw new Error("Você já curtiu esta postagem");            
+        }
+
+        const user_id = payload.id
+        const inputLikePost = { user_id, post_id }
+        await this.postDatabase.likePost(inputLikePost)
+
+        const response = {
+            message: "Post curtido com sucesso"
+        }
+
+        return response
+    }
+
+    public dislikePost = async (input: IDeslikeInput) => {
+        const { token, post_id } = input
+    
+
+        const payload = this.authenticator.getTokenPayload(token)
+
+        if (!payload) {
+            throw new Error("Token inválido");
+        }
+
+        const isExistPost = await this.postDatabase.findPostById(post_id)
+
+        if (!isExistPost) {
+            throw new Error("Post não existe.");
+        }
+
+        const userId = payload.id
+        const findInput = { post_id, userId}
+        const isExistLike = await this.postDatabase.findLike(findInput)
+ 
+        if (!isExistLike) {
+            throw new Error("Você não curtiu esta postagem");            
+        }
+
+        const user_id = payload.id
+        const inputLikePost = { user_id, post_id }
+        await this.postDatabase.dislikePost(inputLikePost)
     }
 }

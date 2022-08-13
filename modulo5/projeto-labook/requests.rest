@@ -7,8 +7,8 @@ Content-Type: application/json
 
 {
     "name": "Carol",
-    "email": "caro@gmail.com",
-    "password": "oioi"
+    "email": "carol@gmail.com",
+    "password": "a1b2c3"
 }
 
 ### Login
@@ -20,19 +20,37 @@ Content-Type: application/json
     "password": "bananinha"
 }
 
+
 ### Created Post
 POST http://localhost:3003/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDI1MDU2OSwiZXhwIjoxNjYwMzM2OTY5fQ.jl8G61mrRVxH9mca6lqCxu2zdlj1RALS-0iKda8z1TY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBmYzBhOGFhLWVjMmYtNDBiOS1iNWUzLWQ4OTg2ODE4NTcwZiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjAzNTQyODcsImV4cCI6MTY2MDQ0MDY4N30.vhLlP19cZosnAbdirUgbFL61fmxMdI3nF9FxgRP76D4
 Content-Type: application/json
 
 { 
-    "content": "Hello world!" 
+    "content": "Hiiiii!" 
 }
 
 ### Get Posts
 GET http://localhost:3003/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDI1MDU2OSwiZXhwIjoxNjYwMzM2OTY5fQ.jl8G61mrRVxH9mca6lqCxu2zdlj1RALS-0iKda8z1TY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDMyMTkzMSwiZXhwIjoxNjYwNDA4MzMxfQ.e6Pu0vUDLWZaVyZO_H2FZuzXNKFFct4eX3-QdELq8TU
 
 ### Delete Post
-DELETE  http://localhost:3003/posts/a097d2d6-622b-4ab6-98a5-2fafa14039d2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDI1MDU2OSwiZXhwIjoxNjYwMzM2OTY5fQ.jl8G61mrRVxH9mca6lqCxu2zdlj1RALS-0iKda8z1TY
+DELETE  http://localhost:3003/posts/c6327477-2c31-4c24-83ba-862f9e7cb13b
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDMyMTkzMSwiZXhwIjoxNjYwNDA4MzMxfQ.e6Pu0vUDLWZaVyZO_H2FZuzXNKFFct4eX3-QdELq8TU
+
+### Like Post
+PUT http://localhost:3003/posts/likes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDM1NDM0NSwiZXhwIjoxNjYwNDQwNzQ1fQ.kZHZESXzITpTNqToc_qMgcAgIRtkXOtnl_uWQtCzpqg
+Content-Type: application/json
+
+{
+    "id": "c6327477-2c31-4c24-83ba-862f9e7cb13b"
+}
+### Deslike Post
+DELETE  http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDM1NDM0NSwiZXhwIjoxNjYwNDQwNzQ1fQ.kZHZESXzITpTNqToc_qMgcAgIRtkXOtnl_uWQtCzpqg
+Content-Type: application/json
+
+{
+    "id": "c6327477-2c31-4c24-83ba-862f9e7cb13b"
+}
