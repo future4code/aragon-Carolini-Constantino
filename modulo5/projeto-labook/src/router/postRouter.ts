@@ -11,10 +11,9 @@ export const postRouter = Router()
 
 const postController = new PostController(
     new PostBusiness(
-        new UserDatabase(),
         new IdGenerator(),
         new Authenticator(),
-        new PostDatabase()
+       new PostDatabase
     )
 )
 
@@ -22,4 +21,4 @@ postRouter.post("", postController.createPost)
 postRouter.get("", postController.getPosts)
 postRouter.delete("/:id", postController.deletePost)
 postRouter.put("/likes", postController.likePost)
-postRouter.delete("", postController.dislikePost)
+postRouter.delete("/likes", postController.dislikePost)
