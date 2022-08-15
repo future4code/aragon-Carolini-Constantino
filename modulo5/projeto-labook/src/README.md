@@ -74,7 +74,7 @@ DB_NAME = nome-do-banco-de-dados
 
 ## Documentação:
 [Postman](https://documenter.getpostman.com/view/21139411/VUjSGjFw)
-[Heroku](https://git.heroku.com/carol-labook.git)
+[Heroku](https://git.heroku.com/carol-labook.git/ping)
 
 ## Stack utilizada
 
