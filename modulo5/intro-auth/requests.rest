@@ -1,0 +1,32 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Signup
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "nickname": "Carol",
+    "email": "carol@email.com",
+    "password": "carol123"
+}
+
+### Get all users (protected)
+GET http://localhost:3003/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljZGY4YTlhLTg0ZjItNDk4My1iZTM5LWQwZTM0NzY0NzAzYiIsImlhdCI6MTY1OTM3ODE2MCwiZXhwIjoxNjU5NDY0NTYwfQ.iE9OZTc1GXUObNP_ODuZyJ2c75jYQxDVyuiqWoAz7k4
+
+### Update user
+PUT http://localhost:3003/users/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljZGY4YTlhLTg0ZjItNDk4My1iZTM5LWQwZTM0NzY0NzAzYiIsImlhdCI6MTY1OTM3ODE2MCwiZXhwIjoxNjU5NDY0NTYwfQ.iE9OZTc1GXUObNP_ODuZyJ2c75jYQxDVyuiqWoAz7k4
+Content-Type: application/json
+
+{
+    "nickname": "Lóu",
+    "email": "lou@email.com",
+    "password": "123"
+}
+
+### Delete user
+DELETE http://localhost:3003/users/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjljZGY4YTlhLTg0ZjItNDk4My1iZTM5LWQwZTM0NzY0NzAzYiIsImlhdCI6MTY1OTM3ODE2MCwiZXhwIjoxNjU5NDY0NTYwfQ.iE9OZTc1GXUObNP_ODuZyJ2c75jYQxDVyuiqWoAz7k4
+
