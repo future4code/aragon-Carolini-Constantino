@@ -1,0 +1,53 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "nickname": "Vovó Juju",
+    "email": "juju@email.com",
+    "password": "abc123"
+}
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### Create Recipe
+POST http://localhost:3003/recipes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
+Content-Type: application/json
+
+{
+    "title": "Batida de abacate",
+    "description": "bem gostosinho"
+}
+
+### Edit Recipe
+PUT http://localhost:3003/recipes/40067838-9b7f-4c07-aff5-d241c26d93c0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
+Content-Type: application/json
+
+{
+    "title": "Mingau de aveia",
+    "description": "pra fazer cocô bonito"
+}
+
+### Delete Recipe
+DELETE http://localhost:3003/recipes/40067838-9b7f-4c07-aff5-d241c26d93c0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
+
+### Get Recipe
+GET  http://localhost:3003/recipes?recipe=panque&sort=updated_at&order=asc&limit=4&page=1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTcwNTQzMSwiZXhwIjoxNjU5NzkxODMxfQ.uPMk_TYfeiFSkXienkaSipUbdK2jnuDByYNWdMWcvXc
+
+### Delete User
+DELETE http://localhost:3003/users/f03017bb-2c08-4cdc-bb63-7fbd7cebe01f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTYzNTcyNSwiZXhwIjoxNjU5NzIyMTI1fQ.JFADsFgAoLS0pm8RDg2cUleZqnL93PWHKzleq8DSqB4
