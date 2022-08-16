@@ -21,11 +21,9 @@ describe("Testando PostBusiness", () => {
         const response = await postBussiness.createPost(input)
 
         expect(response.message).toEqual("Post criado com sucesso")
-        expect(response.post).toEqual([{
-            id: "id-mock",
-            post_id: "id-mock",
-            user_id: "id-mock"
-        }])
+        expect(response.post.getId()).toEqual("id-mock")
+        expect(response.post.getContent()).toEqual("Eaeeew!")
+        expect(response.post.getUserId()).toEqual("101")
     })
 
 })
