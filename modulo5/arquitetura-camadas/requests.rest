@@ -1,0 +1,29 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### 1) Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "yuzo",
+    "email": "yuzo3@email.com",
+    "password": "abc123"
+}
+
+### 2) Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### 3) Get users
+GET http://localhost:3003/users?name=Carol&sort=idC&limit=2&page=1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTk2NzA4OCwiZXhwIjoxNjYwMDUzNDg4fQ.uGzMjuHOTPLk4GXOUzckb0us42nEPHVDEv4_EvVwq48
+
+### 7) Delete user
+DELETE http://localhost:3003/users/1f4f8070-4eab-4531-8cb4-f89609584bc0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOWI3ZWU4LWFlNGItNGJkMS05YmQ2LWU3ZTIxNTk0Mzk5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1OTk4MjI0MSwiZXhwIjoxNjYwMDY4NjQxfQ.CThpgFPE95eBd3P5IHF_UoTx9Dbr8meRtK_gTt2sGsI
