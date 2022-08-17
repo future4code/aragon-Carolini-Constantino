@@ -1,0 +1,56 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Carol",
+    "email": "carol@gmail.com",
+    "password": "a1b2c3"
+}
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+     "email": "carol@gmail.com",
+    "password": "a1b2c3"
+}
+
+
+### Create Post
+POST http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBmYzBhOGFhLWVjMmYtNDBiOS1iNWUzLWQ4OTg2ODE4NTcwZiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjAzNTQyODcsImV4cCI6MTY2MDQ0MDY4N30.vhLlP19cZosnAbdirUgbFL61fmxMdI3nF9FxgRP76D4
+Content-Type: application/json
+
+{ 
+    "content": "Hiiiii!" 
+}
+
+### Get Posts
+GET http://localhost:3003/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDMyMTkzMSwiZXhwIjoxNjYwNDA4MzMxfQ.e6Pu0vUDLWZaVyZO_H2FZuzXNKFFct4eX3-QdELq8TU
+
+### Delete Post
+DELETE  http://localhost:3003/posts/c6327477-2c31-4c24-83ba-862f9e7cb13b
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDMyMTkzMSwiZXhwIjoxNjYwNDA4MzMxfQ.e6Pu0vUDLWZaVyZO_H2FZuzXNKFFct4eX3-QdELq8TU
+
+### Like Post
+PUT http://localhost:3003/posts/likes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDM1NDM0NSwiZXhwIjoxNjYwNDQwNzQ1fQ.kZHZESXzITpTNqToc_qMgcAgIRtkXOtnl_uWQtCzpqg
+Content-Type: application/json
+
+{
+    "id": "c6327477-2c31-4c24-83ba-862f9e7cb13b"
+}
+### Dislike Post
+DELETE  http://localhost:3003/posts/likes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDM1NDM0NSwiZXhwIjoxNjYwNDQwNzQ1fQ.kZHZESXzITpTNqToc_qMgcAgIRtkXOtnl_uWQtCzpqg
+Content-Type: application/json
+
+{
+    "id": "c6327477-2c31-4c24-83ba-862f9e7cb13b"
+}
