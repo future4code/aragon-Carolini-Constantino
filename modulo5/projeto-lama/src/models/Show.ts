@@ -50,9 +50,33 @@ export class Show {
         this.tickets = newTickets
     }
 }
-
-export interface ICreteShowInput {
+export interface ICreateShowInput {
     token: string,
     band: string,
-    starts_at: number
+    starts_at: string
+}
+
+export interface IMessageOutput {
+    message: string
+}
+
+export interface IGetShowsInput {
+    band: string,
+    starts_at: string,
+    tickets: string
+}
+
+export interface ICreateReservationInput {
+    token: string,
+    show_id: string
+}
+
+export interface IFindResInput {
+    show_id: string,
+    user_id: string
+}
+
+export interface IDeleteReservationInput {
+    token: string,
+    show_id: string
 }

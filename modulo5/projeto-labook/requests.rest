@@ -16,14 +16,14 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-     "email": "carol@gmail.com",
-    "password": "a1b2c3"
+     "email": "astrodev@gmail.com",
+    "password": "bananinha"
 }
 
 
 ### Create Post
 POST http://localhost:3003/posts
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBmYzBhOGFhLWVjMmYtNDBiOS1iNWUzLWQ4OTg2ODE4NTcwZiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjAzNTQyODcsImV4cCI6MTY2MDQ0MDY4N30.vhLlP19cZosnAbdirUgbFL61fmxMdI3nF9FxgRP76D4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDc1MzAyMiwiZXhwIjoxNjYwODM5NDIyfQ.V4e_udKdechiqEccLb6ukIV4yZUOX_65hgfizpU_Jns
 Content-Type: application/json
 
 { 
@@ -35,8 +35,8 @@ GET http://localhost:3003/posts
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDMyMTkzMSwiZXhwIjoxNjYwNDA4MzMxfQ.e6Pu0vUDLWZaVyZO_H2FZuzXNKFFct4eX3-QdELq8TU
 
 ### Delete Post
-DELETE  http://localhost:3003/posts/c6327477-2c31-4c24-83ba-862f9e7cb13b
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDMyMTkzMSwiZXhwIjoxNjYwNDA4MzMxfQ.e6Pu0vUDLWZaVyZO_H2FZuzXNKFFct4eX3-QdELq8TU
+DELETE  http://localhost:3003/posts/201
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MDc1MzAyMiwiZXhwIjoxNjYwODM5NDIyfQ.V4e_udKdechiqEccLb6ukIV4yZUOX_65hgfizpU_Jns
 
 ### Like Post
 PUT http://localhost:3003/posts/likes

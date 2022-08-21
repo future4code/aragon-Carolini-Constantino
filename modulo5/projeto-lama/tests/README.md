@@ -1,5 +1,6 @@
-# Projeto Labook-Backend
-O Labook corresponde a um sistema de uma rede social conde simula a conexão e interação entre seus mais diversos usuários. As pessoas poderão criar, deletar, curtir e descurtir publicações.
+
+# Projeto Lama 
+ Este projeto tem o intuito de simular um sistema de gestão de um festival de músicas, que neste caso é chamada Labenu Music Awards-Lama. Com ele é possível organizar e centralizar as informações dos shows em um servidor, que então disponibiliza os dados para o website no front-end (que já está criado). Além de controlar os eventos com suas bandas e datas do show, a aplicação também gerencia os ingressos de cada show.
 
 ## Instruções
  Para rodar o sistema é necessásio:
@@ -41,40 +42,31 @@ DB_NAME = nome-do-banco-de-dados
 -   Path: `/login`
 -   Input: `email(string) e passaword(string)`
 
-#### CREATE POST
+#### CREATE SHOW
 -   Method: `POST`
--   Path: `/posts`
+-   Path: `/shows`
 -   Headers: `token`
--   Input: `content(string)`
+-   Input: `band(string) e starts_at`
 
-#### GET POSTS
+#### GET SHOWS
 -   Method: `GET`
--   Path:`/posts`
+-   Path:`/shows`
 -   Headers: `token`
--   Output: uma lista com todos posts
+-   Output: uma lista com todos shows
+
+#### CREATE RESERVATION
+-   Method: `POST`
+-   Path: `/shows/tickets/:show_id`
+-   Headers: `token`
 
 #### DELETE POST
 -   Method: `DELETE`
--   Path: `/likes`
+-   Path: `/shows/ticket/:show_id`
 -   Headers: `token`
--   Input: `id(string)`
-
-#### LIKE POST
--   Method: `PUT`
--   Path:`/posts/likes`
--   Headers: `token`
--   Input: `id(string)`
-
-
-#### DISLIKE POST
--   Method: `DELETE`
--   Path: `/likes`
--   Headers: `token`
--   Input: `id(string)`
 
 ## Documentação:
-[Postman](https://documenter.getpostman.com/view/21139411/VUjSGjFw)
-[Heroku](https://git.heroku.com/carol-labook.git/ping)
+[Testes da API](file:///C:/Users/f02325070077/Desktop/aragon-Carolini-Constantino/modulo5/projeto-lama/coverage/lcov-report/src/business/index.html)
+[Postman](https://documenter.getpostman.com/view/21139411/VUqptHi8)
 
 ## Stack utilizada
 
@@ -84,6 +76,7 @@ DB_NAME = nome-do-banco-de-dados
 - Knex
 - Express
 - Cors
+- Jest
 
 ## Programas utilizados
 

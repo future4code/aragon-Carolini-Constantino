@@ -5,7 +5,6 @@ import { ShowDatabase } from '../database/ShowDatabase'
 import { Authenticator } from '../services/Authenticator'
 import { HashManager } from '../services/HashManager'
 import { IdGenerator } from '../services/IdGenerator'
-import { userRouter } from './userRouter'
 
 export const showRouter = Router()
 
@@ -18,4 +17,6 @@ const showController = new ShowController(
     )
 )
 
-userRouter.post("", showController.createShow)
+showRouter.post("/", showController.createShow)
+showRouter.post("/tickets/:show_id", showController.createReservation)
+showRouter.delete("/ticket/:show_id", showController.deleteReservation)
