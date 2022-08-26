@@ -92,12 +92,18 @@ export class PostBusiness {
             throw new Error("Token inválido");
         }
 
+        const isExistPost = await this.postDatabase.findPostById(idToDelete)
+console.log({aqui: isExistPost})
+        if (!isExistPost) {
+            throw new Error("Post não existe.");
+        }
+
         if(payload.role !== USER_ROLES.ADMIN){
             if(payload.id !== idToDelete){
                 throw new Error("Você só pode excluir posts de sua autoria")                
             }
 
-            await this.postDatabase.deletePost(input.idToDelete)
+            //await this.postDatabase.deletePost(input.idToDelete)
 
             const response = {
                 message: "Usuário deletado com sucesso"
@@ -106,7 +112,7 @@ export class PostBusiness {
             return response
         }
 
-        await this.postDatabase.deletePost(idToDelete)
+       // await this.postDatabase.deletePost(idToDelete)
 
         const response = {
             message: "Usuário deletado com sucesso"
