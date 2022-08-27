@@ -6,12 +6,12 @@ import { IGetProductosInputDTO } from "../../src/models/Product"
 
 describe("Testando ProductBusiness", () => {
     const productBusiness = new ProductBusiness(
-        new ProductDatabaseMock() as any,
+        new ProductDatabaseMock(),
         new IdGenerator(),
         new Authenticator()
     )
 
-    test("login bem sucedido", async () => {
+    test("getAllProducts bem sucedido", async () => {
         const input: IGetProductosInputDTO = {
             order: "price",
             sort: "ASC",

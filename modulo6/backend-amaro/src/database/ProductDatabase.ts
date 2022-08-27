@@ -60,7 +60,7 @@ export class ProductDatabase extends BaseDatabase {
         return result
     } 
 
-    public getProductsByTag = async (tag: string)  => {
+    public getProductsByTag = async (tag: string): Promise <any>  => {
    
         const [idTag]: ITagDB[] = await BaseDatabase
         .connection(ProductDatabase.TABLE_TAGS)
@@ -71,7 +71,7 @@ export class ProductDatabase extends BaseDatabase {
         .connection(ProductDatabase.TABLE_TAGS_PRODUCTS)
         .select("product_id")
         .where({tag_id: idTag.id})
-
+console.log(result)
         return result 
     }
 

@@ -6,7 +6,7 @@ import { BaseError } from "../../src/errors/BaseError"
 
 describe("Testando ProductBusiness", () => {
     const productBusiness = new ProductBusiness(
-        new ProductDatabaseMock() as any,
+        new ProductDatabaseMock(),
         new IdGenerator(),
         new Authenticator()
     )

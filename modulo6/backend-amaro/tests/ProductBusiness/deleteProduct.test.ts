@@ -14,28 +14,46 @@ describe("Testando ProductBusiness", () => {
 
     test("deleteProduct bem sucedido", async () => {
             const input: IDeletePostInputDTO = {
-                token: "token-carol",
-                idToDelete: "id-mock"
+                token: "token-mock",
+                idToDelete: "8311"
             }
 
             const response = await productBusiness.deleteProduct(input)
 
-            expect(response).toEqual("Usuário deletado com sucesso")
+            expect(response).toEqual("Produto deletado com sucesso")
     })
+
 
     test("deve retornar erro, caso o token seja inválido", async () => {
         expect.assertions(2)
         try {
             const input: IDeletePostInputDTO = {
                 token: "fake-token",
-                idToDelete: "id-mock"
+                idToDelete: "8311"
             }
             
-            await productBusiness.deleteProduct(input)
+            const response = await productBusiness.deleteProduct(input)
         } catch (error: unknown) {
             if (error instanceof BaseError) {
                 expect(error.statusCode).toEqual(400)
                 expect(error.message).toEqual("Não autenticado")
+            }
+        }
+    })
+
+    test("deve retornar erro, caso o usuário seja cliente", async () => {
+        expect.assertions(2)
+        try {
+            const input: IDeletePostInputDTO = {
+                token: "token-mock",
+                idToDelete: "id-mock"
+            }
+            
+            const response = await productBusiness.deleteProduct(input)
+        } catch (error: unknown) {
+            if (error instanceof BaseError) {
+                expect(error.statusCode).toEqual(401)
+                expect(error.message).toEqual("Você não possui autorização para excluir produto")
             }
         }
     })
@@ -48,7 +66,7 @@ describe("Testando ProductBusiness", () => {
                 idToDelete: "1"
             }
             
-            await productBusiness.deleteProduct(input)
+            const response = await productBusiness.deleteProduct(input)
         } catch (error: unknown) {
             if (error instanceof BaseError) {
                 expect(error.statusCode).toEqual(404)
@@ -56,22 +74,4 @@ describe("Testando ProductBusiness", () => {
             }
         }
     })
-//SE O ID DE QUEM CRIOU É O MESMO DE QUEM QUER APAGAR  ???
-    test("deve retornar erro, caso o usuário seja cliente", async () => {
-        expect.assertions(2)
-        try {
-            const input: IDeletePostInputDTO = {
-                token: "token-mock",
-                idToDelete: "id-mock"
-            }
-            
-            await productBusiness.deleteProduct(input)
-        } catch (error: unknown) {
-            if (error instanceof BaseError) {
-                expect(error.statusCode).toEqual(401)
-                expect(error.message).toEqual("Você não possui autorização para excluir produto")
-            }
-        }
-    })
-
 })

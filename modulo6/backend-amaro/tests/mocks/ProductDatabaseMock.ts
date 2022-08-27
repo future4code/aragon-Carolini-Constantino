@@ -2,6 +2,10 @@ import { IProduct, IProductDB, ICreateTagsProdInput } from "../../src/models/Pro
 import { BaseDatabase } from "../../src/database/BaseDatabase";
 
 export class ProductDatabaseMock extends BaseDatabase {
+    public static TABLE_PRODUCTS = "Amaro_Products"
+    public static TABLE_TAGS = "Amaro_Tags"
+    public static TABLE_TAGS_PRODUCTS = "Amaro_Tags_Products"
+
     public getAllProducts = async (): Promise<IProduct[]> => {
         return [
             {
@@ -124,12 +128,24 @@ export class ProductDatabaseMock extends BaseDatabase {
                         "name": "VESTIDO CUT OUT TRICOT",
                         "price": 586
                       }
+                      case "8363":
+                        return {
+                            "id": "8363",
+                            "name": "VESTIDO CURTO MANGA LONGA LUREX",
+                            "price": 522,
+                        }
+                        case "8314":
+                            return {
+                                "id": "8314",
+                                "name": "VESTIDO PLISSADO ACINTURADO",
+                                "price": 500,
+                            }
                       default:
                     return undefined
         }
 } 
 
-    public getProductsByTag = async (tag: string) => {
+    public getProductsByTag = async (tag: string): Promise <any> => {
         switch(tag){
             case "neutro":
                 return [

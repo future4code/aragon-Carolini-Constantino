@@ -8,7 +8,7 @@ import { response } from "express"
 
 describe("Testando ProductBusiness", () => {
     const productBusiness = new ProductBusiness(
-        new ProductDatabaseMock() as any,
+        new ProductDatabaseMock(),
         new IdGenerator(),
         new Authenticator()
     )
@@ -56,7 +56,7 @@ describe("Testando ProductBusiness", () => {
             await productBusiness.createProduct(input)
         } catch (error) {
             expect(error.statusCode).toEqual(401)
-            expect(error.message).toEqual("Você não tem permissão para criar um novo anúncio")
+            expect(error.message).toEqual("Não autenticado")
         }
     })
 
@@ -72,7 +72,7 @@ describe("Testando ProductBusiness", () => {
 
             await productBusiness.createProduct(input)
         } catch (error) {
-            expect(error.statusCode).toEqual(409)
+            expect(error.statusCode).toEqual(401)
             expect(error.message).toEqual("O produto já existe!")
         }
     })
@@ -89,7 +89,7 @@ describe("Testando ProductBusiness", () => {
 
             await productBusiness.createProduct(input)
         } catch (error) {
-            expect(error.statusCode).toEqual(400)
+            expect(error.statusCode).toEqual(401)
             expect(error.message).toEqual("Parâmetro 'price' inválido: deve ser um number")
         }
     })
@@ -123,7 +123,7 @@ describe("Testando ProductBusiness", () => {
 
             await productBusiness.createProduct(input)
         } catch (error) {
-            expect(error.statusCode).toEqual(400)
+            expect(error.statusCode).toEqual(401)
             expect(error.message).toEqual("Parâmetro 'name' inválido: deve ter no mínimo 2 letras")
         }
     })

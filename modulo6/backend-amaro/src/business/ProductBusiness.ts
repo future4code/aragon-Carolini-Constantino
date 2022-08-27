@@ -70,7 +70,7 @@ export class ProductBusiness {
         const searchUp = busca.toUpperCase()
         const productsDB = await this.productDatabase.searchProduct(searchUp)
 
-        const products = productsDB.map(productDB => {
+        const products: any = productsDB.map(productDB => {
             return new Product(
                 productDB.id,
                 productDB.name,
@@ -198,7 +198,7 @@ export class ProductBusiness {
         await this.productDatabase.deleteProduct(idToDelete)
 
         const response = {
-            message: "Usuário deletado com sucesso"
+            message: "Produto deletado com sucesso"
         }
 
         return response

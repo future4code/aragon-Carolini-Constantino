@@ -88,6 +88,10 @@ DB_NAME = nome-do-banco-de-dados
 ## Documentação:
 [Postman](https://documenter.getpostman.com/view/21139411/VUqypESV)
 
+## Testeunitário:
+
+<img src ="test.jpg">
+
 ## Stack utilizada
 
 - NodeJS

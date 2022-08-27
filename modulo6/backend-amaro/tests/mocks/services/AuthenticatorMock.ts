@@ -13,15 +13,15 @@ export class AuthenticatorMock {
 
     getTokenPayload = (token: string): ITokenPayload | null => {
         switch(token) {
-            case "token-mock":
-                return {
-                    id: "id-mock",
-                    role: USER_ROLES.CLIENT
-                }
             case "token-carol":
                 return {
                     id: "101",
                     role: USER_ROLES.ADMIN
+                }
+            case "token-mock":
+                return {
+                    id: "id-mock",
+                    role: USER_ROLES.CLIENT
                 }
             default:
                 return null
