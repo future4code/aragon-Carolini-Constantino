@@ -87,6 +87,7 @@ DB_NAME = nome-do-banco-de-dados
 
 ## Documentação:
 [Postman](https://documenter.getpostman.com/view/21139411/VUqypESV)
+[Heroku](https://backend-amaro-carol.herokuapp.com/products)
 
 ## Testeunitário:
 
