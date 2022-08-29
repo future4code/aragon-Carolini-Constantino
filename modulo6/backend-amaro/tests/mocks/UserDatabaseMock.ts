@@ -25,7 +25,7 @@ export class UserDatabaseMock extends BaseDatabase {
                     name: "Carol",
                     email: "carolini@gmail.com",
                     password: "$2a$12$RBAWOHpUvGTE.MEeIohAzec9tlVqtNA/x2PMPt/Hrt0vI437cQdJC", // bananinha
-                } as IUserDB
+                }  
             default:
                 return undefined
         }

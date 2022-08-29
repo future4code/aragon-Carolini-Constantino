@@ -1,14 +1,14 @@
 import { ProductBusiness } from "../../src/business/ProductBusiness"
 import { ProductDatabaseMock } from "../mocks/ProductDatabaseMock"
-import { IdGenerator } from "../../src/services/IdGenerator"
-import { Authenticator } from "../../src/services/Authenticator"
 import { BaseError } from "../../src/errors/BaseError"
+import { IdGeneratorMock } from "../mocks/services/IdGeneratorMock"
+import { AuthenticatorMock } from "../mocks/services/AuthenticatorMock"
 
 describe("Testando ProductBusiness", () => {
     const productBusiness = new ProductBusiness(
-        new ProductDatabaseMock(),
-        new IdGenerator(),
-        new Authenticator()
+        new ProductDatabaseMock() as any,
+        new IdGeneratorMock(),
+        new AuthenticatorMock()
     )
 
     test("searchProduct bem sucedido", async () => {
@@ -17,22 +17,18 @@ describe("Testando ProductBusiness", () => {
         const response = await productBusiness.searchProduct(busca)
 
         expect(response.message).toEqual("Requisição realizada com sucesso!")
-        expect(response.products).toEqual([
+        expect(response.products).toEqual( [
             {
-              "id": "8309",
-              "name": "VESTIDO MOLETOM COM CAPUZ",
-              "price": 180
-            },
-            {
-              "id": "8367",
-              "name": "VESTIDO MOLETOM COM CAPUZ MESCLA",
-              "price": 359
+              "id": "8311",
+              "name": "VESTIDO SLIPDRESS CETIM",
+              "price": 639,
+              "tags": []
             }
           ])
     })
 
     test("deve retornar erro, caso o campo de busca esteja vazio (undefined)", async () => {
-        expect.assertions(2)
+    
         try {
             const busca = ""
 

@@ -1,14 +1,14 @@
 import { ProductBusiness } from "../../src/business/ProductBusiness"
 import { ProductDatabaseMock } from "../mocks/ProductDatabaseMock"
-import { IdGenerator } from "../../src/services/IdGenerator"
-import { Authenticator } from "../../src/services/Authenticator"
 import { BaseError } from "../../src/errors/BaseError"
+import { IdGeneratorMock } from "../mocks/services/IdGeneratorMock"
+import { AuthenticatorMock } from "../mocks/services/AuthenticatorMock"
 
 describe("Testando ProductBusiness", () => {
     const productBusiness = new ProductBusiness(
-        new ProductDatabaseMock(),
-        new IdGenerator(),
-        new Authenticator()
+        new ProductDatabaseMock() as any,
+        new IdGeneratorMock(),
+        new AuthenticatorMock()
     )
 
     test("getProductsByTag bem sucedido", async () => {
@@ -18,14 +18,26 @@ describe("Testando ProductBusiness", () => {
 
         expect(response.message).toEqual("Requisição realizada com sucesso!")
         expect(response.products).toEqual([
-            { product_id: '8371' },
-            { product_id: '334c6ccf-9755-4ff1-90b9-b4ab87e71e49' },
-            { product_id: '88ce2faa-a575-44c7-92dc-d8fe43b52db9' }
+            {
+              "id": "8371",
+              "name": "VESTIDO TRICOT CHEVRON",
+              "price": 296
+            },
+            {
+              "id": "8311",
+              "name": "VESTIDO SLIPDRESS CETIM",
+              "price": 639
+            },
+            {
+              "id": "7441ec2d-9a01-4e7e-82ed-c55a39bfc9ae",
+              "name": "SHORT",
+              "price": 150
+            }
           ])
     })
 
     test("deve retornar erro, caso não seja enviado nenhuma tag", async () => {
-        expect.assertions(2)
+
         try {
             const tag = ""
 

@@ -122,7 +122,7 @@ export class ProductBusiness {
         const payload = this.authenticator.getTokenPayload(token)
 
         if (!payload) {
-            throw new UnauthorizedError("Não autenticado");
+            throw new RequestError("Não autenticado");
         }
 
         if (payload.role === USER_ROLES.CLIENT) {

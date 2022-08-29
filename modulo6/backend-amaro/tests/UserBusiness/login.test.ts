@@ -8,7 +8,7 @@ import { UserDatabaseMock } from "../mocks/UserDatabaseMock"
 
 describe("Testando UserBusiness", () => {
     const userBusiness = new UserBusiness(
-        new UserDatabaseMock(),
+        new UserDatabaseMock() as any,
         new IdGeneratorMock(),
         new HashManagerMock(),
         new AuthenticatorMock()

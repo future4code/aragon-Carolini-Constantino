@@ -6,7 +6,7 @@ export class ProductDatabaseMock extends BaseDatabase {
     public static TABLE_TAGS = "Amaro_Tags"
     public static TABLE_TAGS_PRODUCTS = "Amaro_Tags_Products"
 
-    public getAllProducts = async (): Promise<IProduct[]> => {
+    public getAllProducts = async (): Promise<IProductDB[] | undefined > => {
         return [
             {
                 "id": "8311",
@@ -58,7 +58,7 @@ export class ProductDatabaseMock extends BaseDatabase {
                 "name": "VESTIDO LONGO CREPE MANGA COMPRIDA",
                 "price": 321
             }
-        ] as IProduct[]
+        ] 
     }
 
     public getTags = async (idProduct: string) => {
