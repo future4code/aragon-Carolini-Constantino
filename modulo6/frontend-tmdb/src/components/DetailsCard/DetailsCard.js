@@ -1,13 +1,11 @@
-import { useParams } from "react-router-dom";
-import { API_DETAIL, API_IMG, API_KEY } from "../../constants/urls";
-import { useRequestData } from "../../hooks/useRequestData";
-import { Main, UpperFild, LowerFild, Trailer, Actor } from "./styles";
-import { Recommendation } from "../RecommendationCard/styles"
+import { API_IMG } from "../../constants/urls";
+import { Main, UpperFild, LowerFild, Trailer } from "./styles";
 import { ActorCard } from "../ActorCard/ActorCard";
+import { RecommendantionCard } from "../RecommendantionCard/RecommendantionCard";
 
 export const DetailsCard = (props) => {
- 
-    const date = new Date(props.movie.release_date);
+
+    const date = new Date(props.release_date);
 
     const genre = props.movie
 
@@ -26,63 +24,49 @@ export const DetailsCard = (props) => {
         return `${horas}h ${minutos}min`
     }
 
-    const [video] = useRequestData(API_DETAIL, `${props.movie.id}/videos?${API_KEY}`);
-
-    const votes = props.movie.vote_average;
-    const [credits] = useRequestData(API_DETAIL, `${props.movie.id}/credits?${API_KEY}`, []);
-    const params = useParams()
-    const [recommendantions] = useRequestData(API_DETAIL,`${params.idMovie}/recommendations?${API_KEY}`, [])
-    const trailer = video?.results[0]
+    const recommendantions = props.recommendantions;
 
     return (
         <Main>
             <UpperFild>
-                <img src={`${API_IMG}${props.movie?.poster_path}`} />
-            <div className="textMovie">
-            <h2>{`${props.movie?.title} (${date.getFullYear()})`}</h2>
+                <img src={`${API_IMG}${props.poster_path}`} />
+                <div className="textMovie">
+                    <h2>{`${props?.title} (${date.getFullYear()})`}</h2>
 
-            <p>{props.movie?.release_date} - {nameGenre?.toString()}</p>
+                    <p>{props?.release_date} - {nameGenre?.toString()}</p>
 
-            <p>{conv(props.movie.runtime)}</p>
+                    <p>{conv(props.runtime)}</p>
 
-            <h4>Avaliação dos usuários</h4>
-            <p>{votes?.toFixed(1)}</p>
+                    <h4>Avaliação dos usuários</h4>
+                    <p>{props?.votes?.toFixed(1)}</p>
 
-            <h3>Sinopse</h3>
-            <p>{props.movie?.overview}</p>
-            </div>
+                    <h3>Sinopse</h3>
+                    <p>{props.overview}</p>
+                </div>
             </UpperFild>
-            
             <LowerFild>
-            <h3>Elenco original</h3>
-            {credits?.cast?.slice(0, 10).map((casting) => {
-                return <ActorCard casting={casting}/>
-            })}
+                <h3>Elenco original</h3>
+                <span>
+                    {props.cast?.map((casting) => {
+                        return <ActorCard casting={casting} />
+                    })}
+                </span>
             </LowerFild>
-
             <Trailer>
-            <h2>Trailer</h2>
+                <h2>Trailer</h2>
                 <iframe
-                src={`https://www.youtube.com/embed/${trailer?.key}`}
-                title="YouTube video player"
+                    src={`https://www.youtube.com/embed/${props?.trailer?.key}`}
+                    title="YouTube video player"
                 />
             </Trailer>
-
-            <Recommendation>
             <h4>Recomendações</h4>
-                {recommendantions.results?.map(movie => {
-                    return (
-                    <>
-                    <img  
-                    width= "200" 
-                    src={`${API_IMG}${movie.poster_path}`}/>
-                    <p>{movie.title}</p>
-                    <p>{movie.release_date}</p>
-                    </>
-                    )
-                })}
-            </Recommendation>
-            
+            {recommendantions?.results?.map((film) => {
+            return (
+              <div>
+                <RecommendantionCard movie={film}></RecommendantionCard>
+              </div>
+            );
+          })}
         </Main>
     );
 };

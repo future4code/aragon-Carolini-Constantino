@@ -1,22 +1,24 @@
 import styled from "styled-components";
 
-export const Main = styled.main`
+export const Main = styled.div`
 margin: 0%;
 padding: 0;
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+background-color: #E5E5E5;
 
-img{
+
+`
+export const UpperFild = styled.div`
+    background-color: #2D0C5E;
+    height: 35rem;
+
+    img{
     position: absolute;
 width: 383px;
 height: 574px;
 left: 4rem;
 top: 5rem;
 };
-
-`
-export const UpperFild = styled.div`
-    background-color: #2D0C5E;
-    height: 35rem;
 
 .textMovie{
     padding-top: 1%;
@@ -27,13 +29,27 @@ export const UpperFild = styled.div`
 `
 
 export const LowerFild = styled.div`
-padding: 4rem;
-display: flex;
-h2, h3{
-    color: black;
-}
-p{
-    color: gray;
+    padding-top: 5rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    position: relative;
+    
+
+span {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+
+@media (max-width: 800px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+img{
+    width: 5rem;
+    height: 8rem;
 }
 
 `
@@ -49,23 +65,3 @@ iframe{
 }
 `
 
-export const Actor = styled.div`
-height:  90%;
-width: 150px;
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-img {
-    align-items: center;
-    align-content:center;
-    text-align: center;
-    width: 90%;
-}
-h3{
-    margin: 0%;
-}
-p{
-    margin: 0%;
-    margin-bottom: 5%;
-    color: gray;
-}
-`

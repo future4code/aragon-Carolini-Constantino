@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useRequestData = (url, path, state) => {
+export const useRequestData = (url, state) => {
   const [data, setData] = useState(state);
 
   const getData = () => {
-    axios
-      .get(`${url}${path}`)
+    axios.get(`${url}`)
       .then((res) => {
         setData(res.data);
       })
