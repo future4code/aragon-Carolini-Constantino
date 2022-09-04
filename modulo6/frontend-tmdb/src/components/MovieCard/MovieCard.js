@@ -9,11 +9,11 @@ export const MovieCard = (props) => {
     return (
         <Card>
             <img
-                onClick={() => goToMovie(navigate, props.movie.id)}
-                src={`${API_IMG}${props.movie.poster_path}`}
+                onClick={() => goToMovie(navigate, props.movie_id)}
+                src={`${API_IMG}${props.poster_path}`}
             />
-            <h3>{props.movie.title}</h3>
-            <p>{props.movie.release_date}</p>
+            <h3>{props.title}</h3>
+            <p>{props.release_date}</p>
         </Card>
     )
 }

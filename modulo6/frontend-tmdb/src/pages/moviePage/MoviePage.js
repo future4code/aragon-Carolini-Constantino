@@ -39,12 +39,12 @@ export default function MoviePage() {
                         <Body>
                                 <DetailsCard
                                         movie={movie}
-                                        release_date={release_date}
+                                        poster_path={poster_path}
                                         title={title}
+                                        release_date={release_date}
                                         runtime={runtime}
                                         votes={votes}
                                         overview={overview}
-                                        poster_path={poster_path}
                                         cast={cast}
                                         trailer={trailer}
                                 />

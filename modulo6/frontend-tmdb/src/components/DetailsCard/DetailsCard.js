@@ -37,7 +37,7 @@ export const DetailsCard = (props) => {
                     <p>{conv(props.runtime)}</p>
 
                     <h4>Avaliação dos usuários</h4>
-                    <p>{props?.votes?.toFixed(1)}</p>
+                    <h5>{props?.votes?.toFixed(1)}</h5>
 
                     <h3>Sinopse</h3>
                     <p>{props.overview}</p>

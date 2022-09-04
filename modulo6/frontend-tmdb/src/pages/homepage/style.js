@@ -4,6 +4,8 @@ export const Main = styled.main`
 padding: 0%;
 margin: 0%;
 background-color: #2d0c5e;
+
+
 `
 
 export const UpperFild = styled.div`
@@ -59,10 +61,14 @@ background-color: white;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 
-
 p{
     color: #5C16C5;
     font-size: large;
+} 
+@media (max-width: 800px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 30px;
 }
 `
 export const Pagination = styled.div`
@@ -72,5 +78,4 @@ justify-content: center;
 color: #5C16C5;
 font-size: large;
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
 `

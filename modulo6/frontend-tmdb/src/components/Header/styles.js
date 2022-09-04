@@ -6,4 +6,6 @@ padding: 1%;
 padding-left: 5%;
 img{
 width: 10%;
-}`
+}
+ 
+`

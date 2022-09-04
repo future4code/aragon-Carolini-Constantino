@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { MovieCard } from "../../components/MovieCard/MovieCard";
 import { Main, LowerFild, Pagination, UpperFild } from "./style";
 import { getDefaultNormalizer } from "@testing-library/react";
+import { id } from "date-fns/locale";
 
 export default function HomePage() {
 
@@ -56,7 +57,17 @@ export default function HomePage() {
                         return movie?.genre_ids.includes(genre)
                     })
                         .map((movie) => {
-                            return <MovieCard movie={movie}></MovieCard>
+                            const idMovie = movie.id
+                            const poster_path = movie.poster_path
+                            const title = movie.title
+                            const release_date = movie.release_date
+
+                            return <MovieCard
+                            movie_id = {idMovie}
+                            poster_path = {poster_path}
+                            title = {title}
+                            release_date = {release_date}
+                            ></MovieCard>
                         }) : <p>...loading</p>}
             </LowerFild>
             <Pagination>

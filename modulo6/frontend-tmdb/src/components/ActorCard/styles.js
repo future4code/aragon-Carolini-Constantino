@@ -32,4 +32,5 @@ img{
     padding-left: 7%;
 
 }
+
 `
