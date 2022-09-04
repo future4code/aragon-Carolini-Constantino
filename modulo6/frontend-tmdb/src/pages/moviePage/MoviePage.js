@@ -33,10 +33,6 @@ export default function MoviePage() {
 
         const trailer = video?.results[0]
 
-        const [recommendations] = useRequestData(
-                `${API_DETAIL}${params.movie_id}/recommendations?${API_KEY}`,
-                []
-              );
         return (
                 <main>
                         <Header></Header>
@@ -51,7 +47,6 @@ export default function MoviePage() {
                                         poster_path={poster_path}
                                         cast={cast}
                                         trailer={trailer}
-                                        recommendations={recommendations}
                                 />
                         </Body>
                 </main>

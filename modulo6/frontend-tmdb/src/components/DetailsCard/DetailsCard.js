@@ -1,7 +1,6 @@
 import { API_IMG } from "../../constants/urls";
 import { Main, UpperFild, LowerFild, Trailer } from "./styles";
 import { ActorCard } from "../ActorCard/ActorCard";
-import { RecommendantionCard } from "../RecommendantionCard/RecommendantionCard";
 
 export const DetailsCard = (props) => {
 
@@ -59,14 +58,6 @@ export const DetailsCard = (props) => {
                     title="YouTube video player"
                 />
             </Trailer>
-            <h4>Recomendações</h4>
-            {recommendantions?.results?.map((film) => {
-            return (
-              <div>
-                <RecommendantionCard movie={film}></RecommendantionCard>
-              </div>
-            );
-          })}
         </Main>
     );
 };
