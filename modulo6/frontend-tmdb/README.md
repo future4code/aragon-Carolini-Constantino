@@ -11,7 +11,8 @@ Projeto desenvolvido por meio de uma API de filmes gratuita [themoviedb](https:/
 - nosy-crowd.surge.sh
 
 ## Imagens
-<img src="src/img/ezgif.com-gif-maker.gif">
+<img src="src\img\ezgif.com-gif-maker.gif">
+
 
 ## Autor
 [Carolini Constantino](https://www.linkedin.com/in/carolini-constantino-ba338a218/)
