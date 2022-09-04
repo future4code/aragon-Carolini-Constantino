@@ -8,10 +8,10 @@ Projeto desenvolvido por meio de uma API de filmes gratuita [themoviedb](https:/
 - styled-componentes
 
 ## Link Surge
-- like-street.surge.sh
+- nosy-crowd.surge.sh
 
 ## Imagens
-(C:\Users\f02325070077\Desktop\aragon-Carolini-Constantino\modulo6\frontend-tmdb\src\img\video.mp4)
+<img src="src/img/ezgif.com-gif-maker.gif">
 
 ## Autor
 [Carolini Constantino](https://www.linkedin.com/in/carolini-constantino-ba338a218/)
