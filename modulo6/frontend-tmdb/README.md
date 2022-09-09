@@ -4,6 +4,7 @@ Projeto desenvolvido por meio de uma API de filmes gratuita [themoviedb](https:/
 
 ## Tecnologias utilizadas
 - react
+- JS
 - axios
 - styled-componentes
 
@@ -11,8 +12,7 @@ Projeto desenvolvido por meio de uma API de filmes gratuita [themoviedb](https:/
 - nosy-crowd.surge.sh
 
 ## Imagens
-<img src="src\img\ezgif.com-gif-maker.gif">
-
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/101641921/189409304-de11ae59-cab8-436d-b86f-410ea1950816.gif)
 
 ## Autor
 [Carolini Constantino](https://www.linkedin.com/in/carolini-constantino-ba338a218/)
