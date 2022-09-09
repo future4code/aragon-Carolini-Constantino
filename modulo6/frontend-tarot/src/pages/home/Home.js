@@ -9,7 +9,7 @@ export const Home = () => {
         <StylesHome>
             <ContainerCentral>
             <h1>Bem Vinde ao Tarot Online...</h1>
-            <h3>Jogue as cartas e descubra o que os arcanjos reservam para você!<br/>
+            <h3>Jogue as cartas e descubra o que os arcanos reservam para você!<br/>
             Mas lembre-se: as cartas não te darão as respostas, pois quem escolhe seu futuro é você!
             </h3>
             <h2>Como jogar:</h2>

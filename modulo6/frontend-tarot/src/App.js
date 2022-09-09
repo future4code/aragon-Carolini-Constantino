@@ -1,14 +1,14 @@
-//import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import Router from "./routes/Router";
 
-// const GlobalStyle = createGlobalStyle`
-// body{
-//   margin: 0;
-//   padding: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-color: #f5f6f7;
-// }
+const GlobalStyle = createGlobalStyle`
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 90vh;
+  background-color: #dacab2;
+}`
 // h1, h2, h3, h4, p{
 //   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 // } 
@@ -25,6 +25,7 @@ import Router from "./routes/Router";
 function App() {
   return (
     <div className="App">
+    <GlobalStyle/>
       <Router/>
     </div>
   );

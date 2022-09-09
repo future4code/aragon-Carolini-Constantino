@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
+
 export const StyleGamePage = styled.div`
-background-color: #D8BFD8;
-width: 100vw;
-height: 100vh;
+text-align: center;
+width: 90%;
 
 button {
   width: 10%;
-  padding: 0.6em 2em;
+  padding: 0.6em 1.7em;
   border: none;
   outline: none;
   color: #EEDD82;
@@ -19,8 +19,8 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin-left: 2%;
-  margin-top: 2%;
+margin-left: 6rem;
+  margin-top: 3%;
 }
 
 button:before {
@@ -74,4 +74,61 @@ button:after {
   top: 0;
   border-radius: 10px;
 }
+
+.ContainerModal {
+  position: absolute;
+  width: 100%;
+height: 100vh;
+position: fixed;
+background-color: rgba( 0, 0, 0,.5);
+z-index: 2000;
+top: 0px;
+display: flex;
+justify-content: center; //horizontal
+align-items: center; // vertical
+
+}
 `;
+
+export const CentralContainer = styled.div`
+display: flex;
+width: 90vw;
+flex-wrap: wrap;
+gap: 20px;
+margin-left: 6.5%;
+margin-top: 3%;
+`
+
+export const Modal = styled.div`
+  position: absolute;
+  width: 60%;
+  height: 73%;
+  margin-top: 5%;
+  background-color: #d0addb;
+padding: 2%;
+  color: #042f66;
+  border: 10px solid #7c6a86;
+  box-shadow: 0 0 0 10px #adb3db;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+.littleFild{
+  display: flex;
+  img{
+    margin-right: 3%;
+    margin-bottom: 3%;
+    border: white solid 8px;
+    border-radius: 8%;
+  }
+}  
+
+.close{
+  position: absolute;
+ padding: 0;
+ padding-left: 0;
+ width: 15px;
+ right: 0px;
+ top: -6%;
+ right: -10px;
+
+}
+`

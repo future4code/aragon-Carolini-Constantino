@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import fundo from "../../images/fundo.jpg"
+import fundo from "../../images/fundo.jpg";
 
 export const StylesHome = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ export const StylesHome = styled.div`
   background-repeat: no-repeat;
   background-size: 100vw;
   color: white;
+  font-family: "Combo";
 
   button {
   width: 10%;
@@ -86,7 +87,7 @@ export const ContainerCentral = styled.div`
     font-style: italic;
     font-variant: small-caps;
   font-size: 18px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Combo";
 color: #191970;
 padding-left: 3%;
 padding-top: 10%;
