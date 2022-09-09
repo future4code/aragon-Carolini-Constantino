@@ -11,13 +11,10 @@ As interpretações de cada carta foram retiradas do site [Astro Link](https://w
 - styled-componentes
 
 ## Link Surge
-- [Click aqui]()
+- [Click aqui](absorbed-oatmeal.surge.sh)
 
 ## Imagens
-<img src="src\images\HomePage.jpg"/>
-<img src="src\images\GamePage1.jpg"/>
-<img src="src\images\GamePage2.jpg"/>
-<img src="src\images\GamePage3.jpg"/>
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/101641921/189407407-01199be6-f47b-4c09-8ca8-18f7d8009cf3.gif)
 
 ## Autor
 [Carolini Constantino](https://www.linkedin.com/in/carolini-constantino-ba338a218/)
