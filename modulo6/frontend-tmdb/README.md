@@ -9,7 +9,7 @@ Projeto desenvolvido por meio de uma API de filmes gratuita [themoviedb](https:/
 - styled-componentes
 
 ## Link Surge
-- nosy-crowd.surge.sh
+- evasive-beam.surge.sh
 
 ## Imagens
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/101641921/189409304-de11ae59-cab8-436d-b86f-410ea1950816.gif)
